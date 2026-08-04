@@ -16,7 +16,7 @@ const SearchWidget = () => {
     
     // For this basic link approach demo, we'll redirect the user to your partner site
     // (Aviasales/Jetradar) with a demo affiliate marker attached.
-    const affiliateMarker = "11111"; // Replace this with your actual Travelpayouts marker
+    const affiliateMarker = "690809"; // Replace this with your actual Travelpayouts marker
     
     const basicLinkUrl = `https://www.aviasales.com/?marker=${affiliateMarker}`;
     
