@@ -1,132 +1,202 @@
 import React, { useState } from 'react';
-import { MapPin, Calendar, Users, Search } from 'lucide-react';
+import { Calendar, Users, Search } from 'lucide-react';
+import CityAutocomplete from './CityAutocomplete';
 
 const SearchWidget = () => {
-  const [origin, setOrigin] = useState('');
-  const [destination, setDestination] = useState('');
+  const [tripType, setTripType] = useState('return'); // 'return' or 'oneway'
+  const [origin, setOrigin] = useState(null); // { name, code }
+  const [destination, setDestination] = useState(null);
   const [departDate, setDepartDate] = useState('');
   const [returnDate, setReturnDate] = useState('');
-  const [passengers, setPassengers] = useState('1 Adult');
+  const [passengers, setPassengers] = useState('1');
+
+  // Helper to format YYYY-MM-DD to DDMM for Aviasales
+  const formatDateForUrl = (dateStr) => {
+    if (!dateStr) return '';
+    const [year, month, day] = dateStr.split('-');
+    return `${day}${month}`;
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
     
-    // In a real app, you would use an Autocomplete API to convert city names (e.g., "New York")
-    // into IATA airport codes (e.g., "NYC") to build a direct search URL.
+    if (!origin?.code || !destination?.code || !departDate) {
+      alert("Please select an Origin, Destination, and Departure Date.");
+      return;
+    }
+
+    const affiliateMarker = "690809"; // Your Travelpayouts marker
     
-    // For this basic link approach demo, we'll redirect the user to your partner site
-    // (Aviasales/Jetradar) with a demo affiliate marker attached.
-    const affiliateMarker = "690809"; // Replace this with your actual Travelpayouts marker
+    const formattedDepart = formatDateForUrl(departDate);
+    const formattedReturn = tripType === 'return' ? formatDateForUrl(returnDate) : '';
     
-    const basicLinkUrl = `https://www.aviasales.com/?marker=${affiliateMarker}`;
+    // URL Format: aviasales.com/search/[OriginIATA][DepartDate][DestinationIATA][ReturnDate][Passengers]
+    // One Way: aviasales.com/search/NYC2508LON1
+    // Return: aviasales.com/search/NYC2508LON02091
     
-    // Change the current page's URL to redirect immediately
-    // We use window.location.href instead of window.open to prevent popup blockers from stopping it
-    window.location.href = basicLinkUrl;
+    const searchParams = `${origin.code}${formattedDepart}${destination.code}${formattedReturn}${passengers}`;
+    const searchUrl = `https://www.aviasales.com/search/${searchParams}?marker=${affiliateMarker}`;
+    
+    // Redirect to partner site
+    window.location.href = searchUrl;
   };
 
   return (
-    <div className="search-widget-container glass-panel">
-      <form className="search-form" onSubmit={handleSearch}>
-        
-        <div className="search-input-group">
-          <div className="input-wrapper">
-            <MapPin className="input-icon" size={20} />
-            <div className="input-content">
-              <label>From</label>
-              <input 
-                type="text" 
-                placeholder="Origin City or Airport" 
-                value={origin}
-                onChange={(e) => setOrigin(e.target.value)}
-              />
-            </div>
-          </div>
-          
-          <div className="divider"></div>
-          
-          <div className="input-wrapper">
-            <MapPin className="input-icon" size={20} />
-            <div className="input-content">
-              <label>To</label>
-              <input 
-                type="text" 
-                placeholder="Destination City" 
-                value={destination}
-                onChange={(e) => setDestination(e.target.value)}
-              />
-            </div>
-          </div>
-          
-          <div className="divider hidden-mobile"></div>
-          
-          <div className="input-wrapper">
-            <Calendar className="input-icon" size={20} />
-            <div className="input-content">
-              <label>Depart</label>
-              <input 
-                type="date" 
-                value={departDate}
-                onChange={(e) => setDepartDate(e.target.value)}
-              />
-            </div>
-          </div>
-          
-          <div className="divider"></div>
-          
-          <div className="input-wrapper">
-            <Calendar className="input-icon" size={20} />
-            <div className="input-content">
-              <label>Return</label>
-              <input 
-                type="date" 
-                value={returnDate}
-                onChange={(e) => setReturnDate(e.target.value)}
-              />
-            </div>
-          </div>
-          
-          <div className="divider hidden-mobile"></div>
-          
-          <div className="input-wrapper">
-            <Users className="input-icon" size={20} />
-            <div className="input-content">
-              <label>Travelers</label>
-              <select 
-                value={passengers}
-                onChange={(e) => setPassengers(e.target.value)}
-                className="passenger-select"
-              >
-                <option>1 Adult</option>
-                <option>2 Adults</option>
-                <option>2 Adults, 1 Child</option>
-                <option>Family (4+)</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <button type="submit" className="btn btn-primary search-btn">
-          <Search size={20} />
-          <span>Search Flights</span>
+    <div className="search-widget-wrapper">
+      <div className="trip-type-toggle">
+        <button 
+          className={`toggle-btn ${tripType === 'return' ? 'active' : ''}`}
+          onClick={() => setTripType('return')}
+        >
+          Return
         </button>
-      </form>
+        <button 
+          className={`toggle-btn ${tripType === 'oneway' ? 'active' : ''}`}
+          onClick={() => setTripType('oneway')}
+        >
+          One Way
+        </button>
+      </div>
+
+      <div className="search-widget-container glass-panel">
+        <form className="search-form" onSubmit={handleSearch}>
+          
+          <div className="search-input-group">
+            <CityAutocomplete 
+              label="From" 
+              placeholder="Origin City" 
+              value={origin} 
+              onSelect={setOrigin} 
+            />
+            
+            <div className="divider"></div>
+            
+            <CityAutocomplete 
+              label="To" 
+              placeholder="Destination City" 
+              value={destination} 
+              onSelect={setDestination} 
+            />
+            
+            <div className="divider hidden-mobile"></div>
+            
+            <div className="input-wrapper">
+              <Calendar className="input-icon" size={20} />
+              <div className="input-content">
+                <label>Depart</label>
+                <input 
+                  type="date" 
+                  value={departDate}
+                  onChange={(e) => setDepartDate(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+            
+            {tripType === 'return' && (
+              <>
+                <div className="divider"></div>
+                <div className="input-wrapper">
+                  <Calendar className="input-icon" size={20} />
+                  <div className="input-content">
+                    <label>Return</label>
+                    <input 
+                      type="date" 
+                      value={returnDate}
+                      onChange={(e) => setReturnDate(e.target.value)}
+                      required={tripType === 'return'}
+                    />
+                  </div>
+                </div>
+              </>
+            )}
+            
+            <div className="divider hidden-mobile"></div>
+            
+            <div className="input-wrapper">
+              <Users className="input-icon" size={20} />
+              <div className="input-content">
+                <label>Travelers</label>
+                <select 
+                  value={passengers}
+                  onChange={(e) => setPassengers(e.target.value)}
+                  className="passenger-select"
+                >
+                  <option value="1">1 Adult</option>
+                  <option value="2">2 Adults</option>
+                  <option value="3">3 Passengers</option>
+                  <option value="4">4 Passengers</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" className="btn btn-primary search-btn">
+            <Search size={20} />
+            <span>Search Flights</span>
+          </button>
+        </form>
+      </div>
       
       <style>{`
-        .search-widget-container {
-          padding: 1.5rem;
+        .search-widget-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+        }
+
+        .trip-type-toggle {
+          display: flex;
           background: rgba(30, 41, 59, 0.7);
+          border-radius: 12px 12px 0 0;
+          padding: 0.5rem 1rem 1rem;
+          margin-bottom: -15px; /* Pull widget up over it */
+          gap: 1rem;
+          z-index: 1;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          border-bottom: none;
+        }
+
+        .toggle-btn {
+          background: transparent;
+          border: none;
+          color: var(--text-secondary);
+          font-weight: 600;
+          font-size: 0.95rem;
+          cursor: pointer;
+          padding: 0.5rem 1rem;
+          border-radius: 8px;
+          transition: all 0.2s ease;
+        }
+
+        .toggle-btn:hover {
+          color: white;
+        }
+
+        .toggle-btn.active {
+          background: rgba(255, 255, 255, 0.1);
+          color: white;
+        }
+
+        .search-widget-container {
+          padding: 1rem;
+          background: rgba(30, 41, 59, 0.85);
           border: 1px solid rgba(255, 255, 255, 0.15);
           border-radius: 100px;
           box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-          max-width: 1000px;
+          width: 100%;
+          max-width: 1100px;
           margin: 0 auto;
+          position: relative;
+          z-index: 2;
+          backdrop-filter: blur(16px);
         }
         
         .search-form {
           display: flex;
           align-items: center;
-          gap: 1rem;
+          gap: 0.5rem;
         }
         
         .search-input-group {
@@ -145,6 +215,7 @@ const SearchWidget = () => {
           flex: 1;
           transition: background 0.2s ease;
           border-radius: 20px;
+          min-width: 0; /* Prevents flex items from overflowing */
         }
         
         .input-wrapper:hover {
@@ -153,12 +224,14 @@ const SearchWidget = () => {
         
         .input-icon {
           color: var(--primary-light);
+          flex-shrink: 0;
         }
         
         .input-content {
           display: flex;
           flex-direction: column;
           flex: 1;
+          min-width: 0;
         }
         
         .input-content label {
@@ -180,6 +253,7 @@ const SearchWidget = () => {
           width: 100%;
           font-family: var(--font-sans);
           cursor: pointer;
+          text-overflow: ellipsis;
         }
         
         .input-content input::placeholder {
@@ -201,7 +275,8 @@ const SearchWidget = () => {
           width: 1px;
           height: 30px;
           background: rgba(255, 255, 255, 0.15);
-          margin: 0 0.5rem;
+          margin: 0 0.25rem;
+          flex-shrink: 0;
         }
         
         .search-btn {
@@ -211,6 +286,7 @@ const SearchWidget = () => {
           gap: 0.5rem;
           height: 100%;
           white-space: nowrap;
+          flex-shrink: 0;
         }
         
         @media (max-width: 1024px) {
