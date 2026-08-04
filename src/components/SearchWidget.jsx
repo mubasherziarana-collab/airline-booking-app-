@@ -20,10 +20,9 @@ const SearchWidget = () => {
     
     const basicLinkUrl = `https://www.aviasales.com/?marker=${affiliateMarker}`;
     
-    alert(`Basic Link Approach:\n\nRedirecting you to our partner site to complete your search for flights from ${origin || 'Anywhere'} to ${destination || 'Anywhere'}...`);
-    
-    // Open the partner site in a new tab so they don't lose your app
-    window.open(basicLinkUrl, '_blank');
+    // Change the current page's URL to redirect immediately
+    // We use window.location.href instead of window.open to prevent popup blockers from stopping it
+    window.location.href = basicLinkUrl;
   };
 
   return (
