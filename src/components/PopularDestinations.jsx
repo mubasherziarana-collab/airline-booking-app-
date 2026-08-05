@@ -5,6 +5,7 @@ const destinations = [
     id: 1,
     city: 'Paris',
     country: 'France',
+    code: 'PAR',
     image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2073&auto=format&fit=crop',
     price: 'from $499'
   },
@@ -12,6 +13,7 @@ const destinations = [
     id: 2,
     city: 'Tokyo',
     country: 'Japan',
+    code: 'TYO',
     image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1994&auto=format&fit=crop',
     price: 'from $699'
   },
@@ -19,6 +21,7 @@ const destinations = [
     id: 3,
     city: 'New York',
     country: 'USA',
+    code: 'NYC',
     image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=2070&auto=format&fit=crop',
     price: 'from $299'
   },
@@ -26,12 +29,15 @@ const destinations = [
     id: 4,
     city: 'Bali',
     country: 'Indonesia',
+    code: 'DPS',
     image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1938&auto=format&fit=crop',
     price: 'from $899'
   }
 ];
 
 const PopularDestinations = () => {
+  const affiliateMarker = "690809"; // Using your Travelpayouts marker
+
   return (
     <section className="destinations section-padding">
       <div className="container">
@@ -42,7 +48,13 @@ const PopularDestinations = () => {
         
         <div className="grid">
           {destinations.map((dest) => (
-            <div key={dest.id} className="card group">
+            <a 
+              key={dest.id} 
+              href={`https://www.aviasales.com/city/${dest.code.toLowerCase()}?marker=${affiliateMarker}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card group"
+            >
               <div className="card-img-wrapper">
                 <img src={dest.image} alt={dest.city} className="card-img" />
                 <div className="card-overlay">
@@ -53,7 +65,7 @@ const PopularDestinations = () => {
                 <h3 className="card-title">{dest.city}</h3>
                 <p className="card-location">{dest.country}</p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
