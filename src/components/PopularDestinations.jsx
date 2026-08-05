@@ -36,7 +36,13 @@ const destinations = [
 ];
 
 const PopularDestinations = () => {
-  const affiliateMarker = "690809"; // Using your Travelpayouts marker
+  const handleDestinationClick = (dest, e) => {
+    e.preventDefault();
+    const event = new CustomEvent('setDestination', { 
+      detail: { code: dest.code, name: `${dest.city} (${dest.code})` } 
+    });
+    window.dispatchEvent(event);
+  };
 
   return (
     <section className="destinations section-padding">
@@ -48,12 +54,11 @@ const PopularDestinations = () => {
         
         <div className="grid">
           {destinations.map((dest) => (
-            <a 
+            <div 
               key={dest.id} 
-              href={`https://www.aviasales.com/city/${dest.code.toLowerCase()}?marker=${affiliateMarker}`}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={(e) => handleDestinationClick(dest, e)}
               className="card group"
+              style={{cursor: 'pointer'}}
             >
               <div className="card-img-wrapper">
                 <img src={dest.image} alt={dest.city} className="card-img" />
@@ -65,7 +70,7 @@ const PopularDestinations = () => {
                 <h3 className="card-title">{dest.city}</h3>
                 <p className="card-location">{dest.country}</p>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>

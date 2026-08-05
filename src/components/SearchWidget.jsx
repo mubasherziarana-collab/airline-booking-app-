@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar, Users, Search } from 'lucide-react';
 import CityAutocomplete from './CityAutocomplete';
 
@@ -9,6 +9,18 @@ const SearchWidget = () => {
   const [departDate, setDepartDate] = useState('');
   const [returnDate, setReturnDate] = useState('');
   const [passengers, setPassengers] = useState('1');
+
+  // Listen for clicks from the Trending Destinations section
+  useEffect(() => {
+    const handleSetDestination = (e) => {
+      setDestination(e.detail);
+      // Scroll smoothly to the search widget
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    
+    window.addEventListener('setDestination', handleSetDestination);
+    return () => window.removeEventListener('setDestination', handleSetDestination);
+  }, []);
 
   // Helper to format YYYY-MM-DD to DDMM for Aviasales
   const formatDateForUrl = (dateStr) => {
