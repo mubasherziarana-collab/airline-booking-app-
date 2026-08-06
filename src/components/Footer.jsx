@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="footer-brand">
             <a href="/" className="logo">
               <Plane className="logo-icon" size={28} />
-              <span className="logo-text">FlyOra</span>
+              <span className="logo-text">MyFlyOra</span>
             </a>
             <p className="brand-desc">
               Your ultimate travel companion for flights, hotels, and seamless experiences worldwide.
@@ -53,7 +53,7 @@ const Footer = () => {
         </div>
         
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} FlyOra. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} MyFlyOra. All rights reserved.</p>
         </div>
       </div>
 

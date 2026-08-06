@@ -7,7 +7,7 @@ const Header = () => {
       <div className="container header-container">
         <a href="/" className="logo">
           <Plane className="logo-icon" size={28} />
-          <span className="logo-text">FlyOra</span>
+          <span className="logo-text">MyFlyOra</span>
         </a>
         
         <nav className="desktop-nav">
@@ -25,9 +25,9 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a href="#cars" className="nav-link">
+              <a href="https://rentoracars.com" target="_blank" rel="noopener noreferrer" className="nav-link">
                 <Car size={18} />
-                <span>Car Rentals (via rentoracars.com)</span>
+                <span>Car Rentals</span>
               </a>
             </li>
             <li>
