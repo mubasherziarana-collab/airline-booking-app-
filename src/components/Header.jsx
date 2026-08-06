@@ -7,7 +7,7 @@ const Header = () => {
       <div className="container header-container">
         <a href="/" className="logo">
           <Plane className="logo-icon" size={28} />
-          <span className="logo-text">WanderSky</span>
+          <span className="logo-text">FlyOra</span>
         </a>
         
         <nav className="desktop-nav">
