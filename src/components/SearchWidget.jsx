@@ -10,6 +10,16 @@ const SearchWidget = () => {
   const [returnDate, setReturnDate] = useState('');
   const [passengers, setPassengers] = useState('1');
 
+  const today = new Date().toISOString().split('T')[0];
+
+  const handleDepartDateChange = (e) => {
+    const newDate = e.target.value;
+    setDepartDate(newDate);
+    if (returnDate && newDate > returnDate) {
+      setReturnDate(newDate);
+    }
+  };
+
   // Listen for clicks from the Trending Destinations section
   useEffect(() => {
     const handleSetDestination = (e) => {
@@ -99,7 +109,8 @@ const SearchWidget = () => {
                 <input 
                   type="date" 
                   value={departDate}
-                  onChange={(e) => setDepartDate(e.target.value)}
+                  min={today}
+                  onChange={handleDepartDateChange}
                   required
                 />
               </div>
@@ -115,6 +126,7 @@ const SearchWidget = () => {
                     <input 
                       type="date" 
                       value={returnDate}
+                      min={departDate || today}
                       onChange={(e) => setReturnDate(e.target.value)}
                       required={tripType === 'return'}
                     />
