@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Users, Search, Plane, Hotel } from 'lucide-react';
+import { Calendar, Users, Search, Plane, Hotel, Car } from 'lucide-react';
 import CityAutocomplete from './CityAutocomplete';
 
 const SearchWidget = () => {
   // Main Tab State
-  const [activeTab, setActiveTab] = useState('flights'); // 'flights' or 'hotels'
+  const [activeTab, setActiveTab] = useState('flights'); // 'flights', 'hotels', or 'cars'
 
   // Flights State
   const [tripType, setTripType] = useState('return'); // 'return' or 'oneway'
@@ -19,6 +19,11 @@ const SearchWidget = () => {
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
   const [guests, setGuests] = useState('2');
+
+  // Cars State
+  const [carLocation, setCarLocation] = useState(null);
+  const [carPickUpDate, setCarPickUpDate] = useState('');
+  const [carDropOffDate, setCarDropOffDate] = useState('');
 
   const today = new Date().toISOString().split('T')[0];
   const affiliateMarker = "690809";
@@ -73,10 +78,34 @@ const SearchWidget = () => {
     }
 
     // Aviasales/Hotellook redirector endpoint
-    // We use the root search.hotellook.com/ which triggers their API to translate 
-    // our dates and cities into the final booking partner (e.g. Booking.com) perfectly.
     const cityName = hotelDestination.name.split(' (')[0];
     const searchUrl = `https://search.hotellook.com/?destination=${encodeURIComponent(cityName)}&checkIn=${checkInDate}&checkOut=${checkOutDate}&marker=${affiliateMarker}&adults=${guests}`;
+    
+    window.location.href = searchUrl;
+  };
+
+  // Handlers for Cars
+  const handleCarPickUpDateChange = (e) => {
+    const newDate = e.target.value;
+    setCarPickUpDate(newDate);
+    if (carDropOffDate && newDate >= carDropOffDate) {
+      // Auto-set dropoff to the next day
+      const nextDay = new Date(newDate);
+      nextDay.setDate(nextDay.getDate() + 1);
+      setCarDropOffDate(nextDay.toISOString().split('T')[0]);
+    }
+  };
+
+  const handleCarSearch = (e) => {
+    e.preventDefault();
+    if (!carLocation?.name || !carPickUpDate || !carDropOffDate) {
+      alert("Please select a Location, Pick-up, and Drop-off date.");
+      return;
+    }
+
+    const cityName = carLocation.name.split(' (')[0];
+    // Generic redirect to Rentalcars.com (which powers most Aviasales cars)
+    const searchUrl = `https://www.rentalcars.com/search-results.html?pickupLocationName=${encodeURIComponent(cityName)}&pickUpDate=${carPickUpDate}&dropOffDate=${carDropOffDate}`;
     
     window.location.href = searchUrl;
   };
@@ -94,12 +123,19 @@ const SearchWidget = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
+    const handleActivateCars = () => {
+      setActiveTab('cars');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     window.addEventListener('setDestination', handleSetDestination);
     window.addEventListener('activateHotelsTab', handleActivateHotels);
+    window.addEventListener('activateCarsTab', handleActivateCars);
     
     return () => {
       window.removeEventListener('setDestination', handleSetDestination);
       window.removeEventListener('activateHotelsTab', handleActivateHotels);
+      window.removeEventListener('activateCarsTab', handleActivateCars);
     };
   }, []);
 
@@ -124,13 +160,21 @@ const SearchWidget = () => {
           <Hotel size={20} />
           <span>Hotels</span>
         </button>
+        <button 
+          className={`main-tab ${activeTab === 'cars' ? 'active' : ''}`}
+          onClick={() => setActiveTab('cars')}
+          type="button"
+        >
+          <Car size={20} />
+          <span>Cars</span>
+        </button>
       </div>
 
       <div className="search-widget-container glass-panel">
         
         {/* FLIGHTS UI */}
         {activeTab === 'flights' && (
-          <div className="flights-ui">
+          <div className="flights-ui fade-in">
             <div className="trip-type-toggle">
               <button 
                 className={`toggle-btn ${tripType === 'return' ? 'active' : ''}`}
@@ -229,7 +273,7 @@ const SearchWidget = () => {
 
         {/* HOTELS UI */}
         {activeTab === 'hotels' && (
-          <div className="hotels-ui">
+          <div className="hotels-ui fade-in">
             <form className="search-form" onSubmit={handleHotelSearch}>
               <div className="search-input-group">
                 <div className="destination-wrapper flex-2">
@@ -301,6 +345,61 @@ const SearchWidget = () => {
           </div>
         )}
 
+        {/* CARS UI */}
+        {activeTab === 'cars' && (
+          <div className="cars-ui fade-in">
+            <form className="search-form" onSubmit={handleCarSearch}>
+              <div className="search-input-group">
+                <div className="destination-wrapper flex-2">
+                  <CityAutocomplete 
+                    label="Pick-up Location" 
+                    placeholder="City or Airport" 
+                    value={carLocation} 
+                    onSelect={setCarLocation} 
+                  />
+                </div>
+                
+                <div className="divider hidden-mobile"></div>
+                
+                <div className="input-wrapper flex-1-5">
+                  <Calendar className="input-icon" size={20} />
+                  <div className="input-content">
+                    <label>Pick-up Date</label>
+                    <input 
+                      type="date" 
+                      value={carPickUpDate}
+                      min={today}
+                      onChange={handleCarPickUpDateChange}
+                      required
+                    />
+                  </div>
+                </div>
+                
+                <div className="divider"></div>
+                
+                <div className="input-wrapper flex-1-5">
+                  <Calendar className="input-icon" size={20} />
+                  <div className="input-content">
+                    <label>Drop-off Date</label>
+                    <input 
+                      type="date" 
+                      value={carDropOffDate}
+                      min={carPickUpDate || today}
+                      onChange={(e) => setCarDropOffDate(e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" className="btn btn-primary search-btn">
+                <Search size={20} />
+                <span>Find Cars</span>
+              </button>
+            </form>
+          </div>
+        )}
+
       </div>
       
       <style>{`
@@ -311,13 +410,22 @@ const SearchWidget = () => {
           width: 100%;
         }
 
+        .fade-in {
+          animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(5px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
         .main-tabs {
           display: flex;
           background: rgba(30, 41, 59, 0.9);
           border-radius: 20px 20px 0 0;
           padding: 1rem 1.5rem 1.5rem;
           margin-bottom: -20px;
-          gap: 1.5rem;
+          gap: 1rem;
           z-index: 1;
           border: 1px solid rgba(255, 255, 255, 0.15);
           border-bottom: none;
@@ -423,6 +531,10 @@ const SearchWidget = () => {
 
         .flex-2 {
           flex: 2;
+        }
+
+        .flex-1-5 {
+          flex: 1.5;
         }
         
         .input-wrapper:hover, .destination-wrapper:hover {

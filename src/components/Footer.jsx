@@ -27,7 +27,7 @@ const Footer = () => {
             <ul>
               <li><a href="#">Flight Search</a></li>
               <li><a href="#search-widget" onClick={(e) => window.dispatchEvent(new CustomEvent('activateHotelsTab'))}>Hotels</a></li>
-              <li><a href="https://rentoracars.com" target="_blank" rel="noopener noreferrer">Car Rentals (rentoracars.com)</a></li>
+              <li><a href="#search-widget" onClick={(e) => window.dispatchEvent(new CustomEvent('activateCarsTab'))}>Car Rentals</a></li>
               <li><a href="#">Travel Insurance</a></li>
             </ul>
           </div>
@@ -38,7 +38,7 @@ const Footer = () => {
               <li><a href="#">About Us</a></li>
               <li><a href="#">Careers</a></li>
               <li><a href="#">Blog</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="mailto:mubasherziarana@gmail.com">Contact Us</a></li>
             </ul>
           </div>
           

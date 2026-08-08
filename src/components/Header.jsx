@@ -25,7 +25,7 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a href="https://rentoracars.com" target="_blank" rel="noopener noreferrer" className="nav-link">
+              <a href="#search-widget" onClick={(e) => window.dispatchEvent(new CustomEvent('activateCarsTab'))} className="nav-link">
                 <Car size={18} />
                 <span>Car Rentals</span>
               </a>
