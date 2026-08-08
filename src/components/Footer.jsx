@@ -26,8 +26,8 @@ const Footer = () => {
             <h4 className="footer-heading">Services</h4>
             <ul>
               <li><a href="#">Flight Search</a></li>
-              <li><a href="#search-widget" onClick={(e) => window.dispatchEvent(new CustomEvent('activateHotelsTab'))}>Hotels</a></li>
-              <li><a href="#search-widget" onClick={(e) => window.dispatchEvent(new CustomEvent('activateCarsTab'))}>Car Rentals</a></li>
+              <li><a href="#search-widget" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('activateHotelsTab')); }}>Hotels</a></li>
+              <li><a href="#search-widget" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('activateCarsTab')); }}>Car Rentals</a></li>
               <li><a href="#">Travel Insurance</a></li>
             </ul>
           </div>

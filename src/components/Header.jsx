@@ -19,13 +19,13 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a href="#search-widget" onClick={(e) => window.dispatchEvent(new CustomEvent('activateHotelsTab'))} className="nav-link">
+              <a href="#search-widget" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('activateHotelsTab')); }} className="nav-link">
                 <Hotel size={18} />
                 <span>Hotels</span>
               </a>
             </li>
             <li>
-              <a href="#search-widget" onClick={(e) => window.dispatchEvent(new CustomEvent('activateCarsTab'))} className="nav-link">
+              <a href="#search-widget" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('activateCarsTab')); }} className="nav-link">
                 <Car size={18} />
                 <span>Car Rentals</span>
               </a>
