@@ -72,10 +72,11 @@ const SearchWidget = () => {
       return;
     }
 
-    // Aviasales Hotels deep link structure
-    // Extract just the city name without the IATA code for better hotel searches
+    // Aviasales/Hotellook redirector endpoint
+    // We use the root search.hotellook.com/ which triggers their API to translate 
+    // our dates and cities into the final booking partner (e.g. Booking.com) perfectly.
     const cityName = hotelDestination.name.split(' (')[0];
-    const searchUrl = `https://www.aviasales.com/hotels?destination=${encodeURIComponent(cityName)}&checkIn=${checkInDate}&checkOut=${checkOutDate}&marker=${affiliateMarker}&adults=${guests}`;
+    const searchUrl = `https://search.hotellook.com/?destination=${encodeURIComponent(cityName)}&checkIn=${checkInDate}&checkOut=${checkOutDate}&marker=${affiliateMarker}&adults=${guests}`;
     
     window.location.href = searchUrl;
   };
