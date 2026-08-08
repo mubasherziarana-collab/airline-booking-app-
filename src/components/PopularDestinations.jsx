@@ -6,7 +6,7 @@ const destinations = [
     city: 'Paris',
     country: 'France',
     code: 'PAR',
-    image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2073&auto=format&fit=crop',
+    image: '/images/paris.jpg',
     price: 'from $499'
   },
   {
@@ -14,7 +14,7 @@ const destinations = [
     city: 'Tokyo',
     country: 'Japan',
     code: 'TYO',
-    image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1994&auto=format&fit=crop',
+    image: '/images/tokyo.jpg',
     price: 'from $699'
   },
   {
@@ -22,7 +22,7 @@ const destinations = [
     city: 'New York',
     country: 'USA',
     code: 'NYC',
-    image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=2070&auto=format&fit=crop',
+    image: '/images/newyork.jpg',
     price: 'from $299'
   },
   {
@@ -30,7 +30,7 @@ const destinations = [
     city: 'Bali',
     country: 'Indonesia',
     code: 'DPS',
-    image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1938&auto=format&fit=crop',
+    image: '/images/bali.jpg',
     price: 'from $899'
   }
 ];

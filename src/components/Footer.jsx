@@ -26,7 +26,7 @@ const Footer = () => {
             <h4 className="footer-heading">Services</h4>
             <ul>
               <li><a href="#">Flight Search</a></li>
-              <li><a href="#">Hotels</a></li>
+              <li><a href="https://search.hotellook.com/?marker=690809" target="_blank" rel="noopener noreferrer">Hotels</a></li>
               <li><a href="https://rentoracars.com" target="_blank" rel="noopener noreferrer">Car Rentals (rentoracars.com)</a></li>
               <li><a href="#">Travel Insurance</a></li>
             </ul>

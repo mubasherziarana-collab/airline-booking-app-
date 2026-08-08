@@ -19,7 +19,7 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a href="#hotels" className="nav-link">
+              <a href="https://search.hotellook.com/?marker=690809" target="_blank" rel="noopener noreferrer" className="nav-link">
                 <Hotel size={18} />
                 <span>Hotels</span>
               </a>
