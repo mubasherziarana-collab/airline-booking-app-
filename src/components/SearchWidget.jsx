@@ -104,8 +104,8 @@ const SearchWidget = () => {
     }
 
     const cityName = carLocation.name.split(' (')[0];
-    // Generic redirect to Rentalcars.com (which powers most Aviasales cars)
-    const searchUrl = `https://www.rentalcars.com/search-results.html?pickupLocationName=${encodeURIComponent(cityName)}&pickUpDate=${carPickUpDate}&dropOffDate=${carDropOffDate}`;
+    // Generic redirect to GetRentacar.com
+    const searchUrl = `https://getrentacar.com/en/search?location=${encodeURIComponent(cityName)}`;
     
     window.location.href = searchUrl;
   };
