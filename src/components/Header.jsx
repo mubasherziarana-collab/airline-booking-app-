@@ -5,9 +5,12 @@ const Header = () => {
   return (
     <header className="header glass-panel">
       <div className="container header-container">
-        <a href="/" className="logo">
-          <Plane className="logo-icon" size={28} />
-          <span className="logo-text">MyFlyOra</span>
+        <a href="/" className="logo-wrapper">
+          <div className="logo">
+            <Plane className="logo-icon" size={28} />
+            <span className="logo-text">MyFlyOra</span>
+          </div>
+          <span className="logo-slogan">Your Journey. Our Wings.</span>
         </a>
         
         <nav className="desktop-nav">
@@ -64,6 +67,13 @@ const Header = () => {
           align-items: center;
         }
         
+        .logo-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          text-decoration: none;
+        }
+        
         .logo {
           display: flex;
           align-items: center;
@@ -84,6 +94,15 @@ const Header = () => {
           background: var(--gradient-primary);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
+        }
+        
+        .logo-slogan {
+          font-size: 0.7rem;
+          color: rgba(255, 255, 255, 0.7);
+          margin-top: -2px;
+          margin-left: 36px;
+          font-weight: 500;
+          letter-spacing: 0.5px;
         }
         
         .desktop-nav {
