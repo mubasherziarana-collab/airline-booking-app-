@@ -19,7 +19,7 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a href="https://search.hotellook.com/?marker=690809" target="_blank" rel="noopener noreferrer" className="nav-link">
+              <a href="#search-widget" onClick={(e) => window.dispatchEvent(new CustomEvent('activateHotelsTab'))} className="nav-link">
                 <Hotel size={18} />
                 <span>Hotels</span>
               </a>
