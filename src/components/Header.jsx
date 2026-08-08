@@ -40,8 +40,6 @@ const Header = () => {
         </nav>
         
         <div className="header-actions">
-          <button className="btn btn-outline login-btn">Sign In</button>
-          <button className="btn btn-primary register-btn">Sign Up</button>
           <button className="mobile-menu-btn">
             <Menu size={24} />
           </button>
