@@ -103,9 +103,8 @@ const SearchWidget = () => {
       return;
     }
 
-    const cityName = carLocation.name.split(' (')[0];
-    // Generic redirect to GetRentacar.com
-    const searchUrl = `https://getrentacar.com/en/search?location=${encodeURIComponent(cityName)}`;
+    // We are using your specific Travelpayouts affiliate link for GetRentacar
+    const searchUrl = `https://getrentacar.tpo.lu/SHL4jeZu`;
     
     window.location.href = searchUrl;
   };
