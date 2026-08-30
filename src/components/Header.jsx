@@ -3,7 +3,7 @@ import { Plane, Car, Hotel, Compass, Menu } from 'lucide-react';
 
 const Header = () => {
   return (
-    <header className="header glass-panel">
+    <header className="header">
       <div className="container header-container">
         <a href="/" className="logo-wrapper">
           <div className="logo">
@@ -51,14 +51,13 @@ const Header = () => {
 
       <style>{`
         .header {
-          position: fixed;
-          top: 1rem;
-          left: 50%;
-          transform: translateX(-50%);
-          width: calc(100% - 2rem);
-          max-width: 1200px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
           z-index: 100;
-          padding: 1rem 0;
+          padding: 1.5rem 0;
+          background: transparent;
         }
         
         .header-container {
@@ -83,7 +82,7 @@ const Header = () => {
         }
         
         .logo-icon {
-          color: var(--primary-light);
+          color: white;
         }
         
         .logo-text {
@@ -91,14 +90,12 @@ const Header = () => {
           font-size: 1.5rem;
           font-weight: 800;
           letter-spacing: -0.5px;
-          background: var(--gradient-primary);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          color: white;
         }
         
         .logo-slogan {
           font-size: 0.7rem;
-          color: rgba(255, 255, 255, 0.7);
+          color: rgba(255, 255, 255, 0.8);
           margin-top: -2px;
           margin-left: 36px;
           font-weight: 500;
@@ -127,7 +124,7 @@ const Header = () => {
           gap: 0.5rem;
           font-weight: 500;
           font-size: 0.95rem;
-          color: var(--text-secondary);
+          color: rgba(255, 255, 255, 0.8);
           transition: color 0.2s ease;
         }
         
@@ -135,8 +132,8 @@ const Header = () => {
           color: white;
         }
         
-        .nav-link.active svg {
-          color: var(--primary-light);
+        .nav-link.active {
+          font-weight: 600;
         }
         
         .header-actions {
@@ -153,16 +150,9 @@ const Header = () => {
           cursor: pointer;
         }
         
-        .login-btn, .register-btn {
-          display: none;
-        }
-        
         @media (min-width: 768px) {
           .mobile-menu-btn {
             display: none;
-          }
-          .login-btn, .register-btn {
-            display: inline-flex;
           }
         }
       `}</style>

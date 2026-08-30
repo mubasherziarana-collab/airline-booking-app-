@@ -4,23 +4,12 @@ import SearchWidget from './SearchWidget';
 const Hero = () => {
   return (
     <section className="hero">
-      <div className="hero-background">
-        <div className="overlay"></div>
-        {/* Placeholder for a beautiful image. In a real app, use a high-res travel image */}
-        <img 
-          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop" 
-          alt="Airplane flying over clouds at sunset" 
-          className="hero-img"
-        />
-      </div>
-      
       <div className="container hero-content animate-fade-in">
         <h1 className="hero-title">
-          Discover The World<br />
-          <span className="text-gradient">Without Limits</span>
+          Search cheap flight tickets
         </h1>
         <p className="hero-subtitle">
-          Find the best flight deals, book your dream vacation, and manage everything in one seamless experience.
+          Compare deals from hundreds of travel sites at once.
         </p>
         
         <div className="hero-search-wrapper">
@@ -31,46 +20,17 @@ const Hero = () => {
       <style>{`
         .hero {
           position: relative;
-          min-height: 80vh;
+          min-height: 550px;
           display: flex;
           flex-direction: column;
           justify-content: center;
           padding-top: 6rem;
-        }
-        
-        .hero-background {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: -1;
-          overflow: hidden;
-        }
-        
-        .hero-img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-        }
-        
-        .overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(to bottom, 
-            rgba(15, 23, 42, 0.7) 0%, 
-            rgba(15, 23, 42, 0.9) 60%,
-            var(--bg-color) 100%
-          );
+          background-color: var(--primary-color);
         }
         
         .hero-content {
           text-align: center;
-          max-width: 800px;
+          max-width: 900px;
           margin: 0 auto;
           position: relative;
           z-index: 2;
@@ -78,20 +38,15 @@ const Hero = () => {
         
         .hero-title {
           font-size: 3.5rem;
-          margin-bottom: 1.5rem;
-          text-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-        
-        .text-gradient {
-          background: var(--gradient-primary);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          margin-bottom: 1rem;
+          color: white;
+          font-weight: 800;
         }
         
         .hero-subtitle {
           font-size: 1.25rem;
-          color: var(--text-secondary);
-          margin-bottom: 3rem;
+          color: rgba(255, 255, 255, 0.9);
+          margin-bottom: 2rem;
           max-width: 600px;
           margin-left: auto;
           margin-right: auto;
@@ -99,16 +54,18 @@ const Hero = () => {
         
         @media (max-width: 768px) {
           .hero-title {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
           }
           .hero-subtitle {
             font-size: 1.1rem;
           }
+          .hero {
+            min-height: 500px;
+          }
         }
         
         .hero-search-wrapper {
-          margin-top: 2rem;
-          margin-bottom: -4rem; /* pulls the next section up slightly */
+          margin-top: 1rem;
           position: relative;
           z-index: 10;
         }

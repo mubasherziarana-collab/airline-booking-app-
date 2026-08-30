@@ -169,7 +169,7 @@ const SearchWidget = () => {
         </button>
       </div>
 
-      <div className="search-widget-container glass-panel">
+      <div className="search-widget-container">
         
         {/* FLIGHTS UI */}
         {activeTab === 'flights' && (
@@ -420,41 +420,36 @@ const SearchWidget = () => {
 
         .main-tabs {
           display: flex;
-          background: rgba(30, 41, 59, 0.9);
-          border-radius: 20px 20px 0 0;
-          padding: 1rem 1.5rem 1.5rem;
-          margin-bottom: -20px;
-          gap: 1rem;
+          background: transparent;
+          padding: 0;
+          margin-bottom: 1rem;
+          gap: 0.5rem;
           z-index: 1;
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          border-bottom: none;
-          box-shadow: 0 -10px 20px rgba(0,0,0,0.2);
         }
 
         .main-tab {
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          background: transparent;
+          background: rgba(255, 255, 255, 0.15);
           border: none;
-          color: var(--text-secondary);
-          font-weight: 700;
-          font-size: 1.1rem;
+          color: white;
+          font-weight: 600;
+          font-size: 1rem;
           cursor: pointer;
-          padding: 0.5rem 1rem;
+          padding: 0.75rem 1.25rem;
           border-radius: 12px;
           transition: all 0.2s ease;
         }
 
         .main-tab:hover {
-          color: white;
-          background: rgba(255, 255, 255, 0.05);
+          background: rgba(255, 255, 255, 0.25);
         }
 
         .main-tab.active {
-          color: white;
-          background: var(--primary-color);
-          box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+          color: var(--primary-color);
+          background: white;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .trip-type-toggle {
@@ -476,26 +471,24 @@ const SearchWidget = () => {
         }
 
         .toggle-btn:hover {
-          color: white;
+          color: var(--text-primary);
         }
 
         .toggle-btn.active {
-          background: rgba(255, 255, 255, 0.1);
-          color: white;
+          background: var(--surface-light);
+          color: var(--text-primary);
         }
 
         .search-widget-container {
           padding: 1.5rem;
-          background: rgba(30, 41, 59, 0.85);
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          border-radius: 24px;
-          box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+          background: white;
+          border-radius: 16px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
           width: 100%;
           max-width: 1100px;
           margin: 0 auto;
           position: relative;
           z-index: 2;
-          backdrop-filter: blur(16px);
         }
         
         .search-form {
@@ -508,9 +501,9 @@ const SearchWidget = () => {
           display: flex;
           flex: 1;
           align-items: center;
-          background: rgba(0, 0, 0, 0.2);
-          border-radius: 16px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: white;
+          border-radius: 12px;
+          border: 1px solid var(--surface-light);
         }
         
         .input-wrapper {
@@ -520,8 +513,9 @@ const SearchWidget = () => {
           padding: 0.75rem 1rem;
           flex: 1;
           transition: background 0.2s ease;
-          border-radius: 16px;
+          border-radius: 12px;
           min-width: 0;
+          background: white;
         }
 
         .destination-wrapper {
@@ -537,11 +531,11 @@ const SearchWidget = () => {
         }
         
         .input-wrapper:hover, .destination-wrapper:hover {
-          background: rgba(255, 255, 255, 0.05);
+          background: #f8fafc;
         }
         
         .input-icon {
-          color: var(--primary-light);
+          color: var(--primary-color);
           flex-shrink: 0;
         }
         
@@ -564,7 +558,7 @@ const SearchWidget = () => {
         .input-content input, .input-content select {
           background: transparent;
           border: none;
-          color: white;
+          color: var(--text-primary);
           font-size: 0.95rem;
           font-weight: 500;
           outline: none;
@@ -575,36 +569,44 @@ const SearchWidget = () => {
         }
         
         .input-content input::placeholder {
-          color: rgba(255, 255, 255, 0.4);
+          color: #a0aec0;
         }
         
         .input-content input[type="date"]::-webkit-calendar-picker-indicator {
-          filter: invert(1);
-          opacity: 0.5;
           cursor: pointer;
         }
         
         .passenger-select option {
-          background: var(--surface-color);
-          color: white;
+          background: white;
+          color: var(--text-primary);
         }
         
         .divider {
           width: 1px;
           height: 40px;
-          background: rgba(255, 255, 255, 0.15);
+          background: var(--surface-light);
           margin: 0;
           flex-shrink: 0;
         }
         
         .search-btn {
           padding: 1.25rem 2rem;
-          border-radius: 16px;
+          border-radius: 12px;
           font-size: 1.05rem;
           gap: 0.5rem;
           height: 100%;
           white-space: nowrap;
           flex-shrink: 0;
+          background: var(--secondary-color);
+          color: white;
+          font-weight: 700;
+          border: none;
+        }
+        
+        .search-btn:hover {
+          background: #e66000;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(255, 109, 0, 0.3);
         }
         
         @media (max-width: 1024px) {
@@ -621,8 +623,8 @@ const SearchWidget = () => {
           }
           
           .input-wrapper, .destination-wrapper {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: white;
+            border: 1px solid var(--surface-light);
             margin-bottom: 0.5rem;
             border-radius: 12px;
           }

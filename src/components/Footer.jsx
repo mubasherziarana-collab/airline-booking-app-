@@ -93,14 +93,14 @@ const Footer = () => {
         }
         
         .logo-icon {
-          color: var(--primary-light);
+          color: var(--primary-color);
         }
         
         .logo-text {
           font-family: var(--font-display);
           font-size: 1.5rem;
           font-weight: 800;
-          color: white;
+          color: var(--text-primary);
         }
         
         .brand-desc {
@@ -128,13 +128,14 @@ const Footer = () => {
         
         .social-link:hover {
           background: var(--primary-color);
+          color: white;
           transform: translateY(-3px);
         }
         
         .footer-heading {
           font-size: 1.1rem;
           margin-bottom: 1.5rem;
-          color: white;
+          color: var(--text-primary);
         }
         
         .footer-links ul {
@@ -150,7 +151,7 @@ const Footer = () => {
         }
         
         .footer-links a:hover {
-          color: var(--primary-light);
+          color: var(--primary-color);
         }
         
         .footer-bottom {

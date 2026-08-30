@@ -77,7 +77,7 @@ const CityAutocomplete = ({ label, placeholder, value, onSelect }) => {
         />
         
         {isOpen && (results.length > 0 || loading) && (
-          <div className="autocomplete-dropdown glass-panel">
+          <div className="autocomplete-dropdown">
             {loading ? (
               <div className="dropdown-item loading">Searching...</div>
             ) : (
@@ -109,12 +109,12 @@ const CityAutocomplete = ({ label, placeholder, value, onSelect }) => {
           width: 250px;
           max-height: 300px;
           overflow-y: auto;
-          background: var(--surface-color);
+          background: white;
           border: 1px solid var(--surface-light);
           border-radius: 12px;
           margin-top: 8px;
           z-index: 50;
-          box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+          box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
         @media (max-width: 1024px) {
@@ -129,7 +129,7 @@ const CityAutocomplete = ({ label, placeholder, value, onSelect }) => {
           display: flex;
           align-items: center;
           gap: 8px;
-          border-bottom: 1px solid rgba(255,255,255,0.05);
+          border-bottom: 1px solid var(--surface-light);
           transition: background 0.2s;
         }
         
@@ -138,7 +138,7 @@ const CityAutocomplete = ({ label, placeholder, value, onSelect }) => {
         }
         
         .dropdown-item:hover {
-          background: rgba(255,255,255,0.1);
+          background: #f8fafc;
         }
         
         .dropdown-item.loading {
@@ -148,7 +148,7 @@ const CityAutocomplete = ({ label, placeholder, value, onSelect }) => {
         }
         
         .place-name {
-          color: white;
+          color: var(--text-primary);
           font-weight: 500;
           flex: 1;
           white-space: nowrap;

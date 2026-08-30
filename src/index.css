@@ -1,28 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap');
 
 :root {
-  /* Vibrant Color Palette */
-  --primary-color: #4f46e5; /* Indigo */
-  --primary-light: #818cf8;
-  --secondary-color: #ec4899; /* Pink */
-  --accent-color: #10b981; /* Emerald */
+  /* Aviasales Color Palette */
+  --primary-color: #0c73fe; /* Aviasales Blue */
+  --primary-light: #4496ff;
+  --secondary-color: #ff6d00; /* Aviasales Orange */
+  --accent-color: #ff6d00; 
   
-  /* Dark Mode Palette */
-  --bg-color: #0f172a; /* Slate 900 */
-  --surface-color: #1e293b; /* Slate 800 */
-  --surface-light: #334155; /* Slate 700 */
+  /* Light Mode Palette */
+  --bg-color: #f4f5f6; /* Very light gray */
+  --surface-color: #ffffff; /* White panels */
+  --surface-light: #e2e8f0; 
   
   /* Text */
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
+  --text-primary: #1a1a1a;
+  --text-secondary: #555555;
   
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.0));
+  /* Solid colors replacing gradients for flat design */
+  --gradient-primary: var(--secondary-color);
+  --gradient-glass: #ffffff;
   
   /* Shadows & Borders */
-  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  --border-glass: 1px solid rgba(255, 255, 255, 0.18);
+  --shadow-glass: 0 4px 14px 0 rgba(0, 0, 0, 0.05);
+  --border-glass: none;
   
   --font-sans: 'Inter', sans-serif;
   --font-display: 'Outfit', sans-serif;
@@ -69,8 +69,6 @@ a:hover {
 /* Glassmorphism Classes */
 .glass-panel {
   background: var(--gradient-glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-radius: 16px;
   border: var(--border-glass);
   box-shadow: var(--shadow-glass);
