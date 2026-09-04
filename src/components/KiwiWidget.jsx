@@ -6,7 +6,7 @@ const KiwiWidget = () => {
   useEffect(() => {
     if (containerRef.current && containerRef.current.children.length === 0) {
       const script = document.createElement('script');
-      script.src = "https://trpwdg.com/content?currency=usd&trs=559367&shmarker=690809&locale=en&powered_by=true&limit=4&primary_color=00AE98&results_background_color=FFFFFF&form_background_color=FFFFFF&campaign_id=111&promo_id=3411";
+      script.src = "https://trpwdg.com/content?currency=usd&trs=559367&shmarker=690809&locale=en&stops=any&show_hotels=true&powered_by=true&border_radius=0&plain=true&color_button=%2300A991&color_button_text=%23ffffff&promo_id=3414&campaign_id=111";
       script.async = true;
       script.charset = "utf-8";
       containerRef.current.appendChild(script);
