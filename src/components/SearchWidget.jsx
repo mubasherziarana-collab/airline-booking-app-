@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Users, Search, Plane, Hotel, Car } from 'lucide-react';
+import { Calendar, Users, Search, Plane, Hotel, Car, Ticket } from 'lucide-react';
 import CityAutocomplete from './CityAutocomplete';
 
 const SearchWidget = () => {
   // Main Tab State
-  const [activeTab, setActiveTab] = useState('flights'); // 'flights', 'hotels', or 'cars'
+  const [activeTab, setActiveTab] = useState('flights'); // 'flights', 'hotels', 'cars', or 'cheapoair'
+
 
   // Flights State
   const [tripType, setTripType] = useState('return'); // 'return' or 'oneway'
@@ -166,6 +167,14 @@ const SearchWidget = () => {
         >
           <Car size={20} />
           <span>Cars</span>
+        </button>
+        <button 
+          className={`main-tab ${activeTab === 'kiwi' ? 'active' : ''}`}
+          onClick={() => setActiveTab('kiwi')}
+          type="button"
+        >
+          <Plane size={20} />
+          <span>Kiwi.com</span>
         </button>
       </div>
 
@@ -396,6 +405,26 @@ const SearchWidget = () => {
                 <span>Find Cars</span>
               </button>
             </form>
+          </div>
+        )}
+
+        {/* KIWI UI */}
+        {activeTab === 'kiwi' && (
+          <div className="cheapoair-ui fade-in" style={{ textAlign: 'center', padding: '2rem 1rem' }}>
+            <Plane size={48} color="var(--primary-color)" style={{ marginBottom: '1rem' }} />
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Exclusive Deals on Kiwi.com</h3>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', maxWidth: '500px', margin: '0 auto 1.5rem' }}>
+              Compare millions of discounted flights and book the best deals directly through our exclusive Kiwi.com partnership.
+            </p>
+            <a 
+              href="https://kiwi.tpo.lu/XBg3rt9G" 
+              className="btn btn-primary search-btn kiwi-affiliate-link" 
+              style={{ display: 'inline-flex', padding: '1rem 2rem', textDecoration: 'none' }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Search on Kiwi.com</span>
+            </a>
           </div>
         )}
 
