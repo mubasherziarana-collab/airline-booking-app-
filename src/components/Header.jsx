@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="container header-container">
-        <a href="/" className="logo-wrapper">
+        <a href="#home" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('navigate', { detail: 'home' })); }} className="logo-wrapper">
           <div className="logo">
             <Plane className="logo-icon" size={28} />
             <span className="logo-text">MyFlyOra</span>

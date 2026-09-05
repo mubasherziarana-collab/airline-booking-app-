@@ -35,7 +35,7 @@ const Footer = () => {
           <div className="footer-links">
             <h4 className="footer-heading">Company</h4>
             <ul>
-              <li><a href="#">About Us</a></li>
+              <li><a href="#about" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('navigate', { detail: 'about' })); }}>About Us</a></li>
               <li><a href="#">Careers</a></li>
               <li><a href="#">Blog</a></li>
               <li><a href="mailto:mubasherziarana@gmail.com">Contact Us</a></li>
