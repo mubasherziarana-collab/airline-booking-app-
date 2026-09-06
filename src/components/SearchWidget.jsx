@@ -177,6 +177,14 @@ const SearchWidget = () => {
           <Plane size={20} />
           <span>Kiwi.com</span>
         </button>
+        <button 
+          className={`main-tab ${activeTab === 'cheapoair' ? 'active' : ''}`}
+          onClick={() => setActiveTab('cheapoair')}
+          type="button"
+        >
+          <Ticket size={20} />
+          <span>CheapOair</span>
+        </button>
       </div>
 
       <div className="search-widget-container">
@@ -413,6 +421,26 @@ const SearchWidget = () => {
         {activeTab === 'kiwi' && (
           <div className="kiwi-ui fade-in">
             <KiwiWidget />
+          </div>
+        )}
+
+        {/* CHEAPOAIR UI */}
+        {activeTab === 'cheapoair' && (
+          <div className="cheapoair-ui fade-in" style={{ textAlign: 'center', padding: '2rem 1rem' }}>
+            <Ticket size={48} color="var(--primary-color)" style={{ marginBottom: '1rem' }} />
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Compare Exclusive Deals on CheapOair</h3>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', maxWidth: '500px', margin: '0 auto 1.5rem' }}>
+              We partner with CheapOair to bring you massive discounts on last-minute flights and international travel. 
+            </p>
+            <a 
+              href="https://www.cheapoair.com" 
+              className="btn btn-primary search-btn" 
+              style={{ display: 'inline-flex', padding: '1rem 2rem', textDecoration: 'none' }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Search on CheapOair</span>
+            </a>
           </div>
         )}
 
