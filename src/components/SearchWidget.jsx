@@ -471,7 +471,11 @@ const SearchWidget = () => {
         {/* ETIHAD UI */}
         {activeTab === 'etihad' && (
           <div className="etihad-ui fade-in" style={{ textAlign: 'center', padding: '2rem 1rem' }}>
-            <Plane size={48} color="#d4a373" style={{ marginBottom: '1rem' }} />
+            <img 
+              src="https://upload.wikimedia.org/wikipedia/commons/0/06/Etihad_Airways_Logo.svg" 
+              alt="Etihad Airways" 
+              style={{ height: '60px', marginBottom: '1.5rem' }} 
+            />
             <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Fly Premium with Etihad Airways</h3>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', maxWidth: '500px', margin: '0 auto 1.5rem' }}>
               Experience world-class luxury and comfort. Book directly with Etihad Airways for your next international journey.
