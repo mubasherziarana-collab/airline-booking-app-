@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Users, Search, Plane, Hotel, Car, Ticket, Map } from 'lucide-react';
+import { Calendar, Users, Search, Plane, Hotel, Car, Ticket, Map, Crown } from 'lucide-react';
 import CityAutocomplete from './CityAutocomplete';
 import KiwiWidget from './KiwiWidget';
 import ExpediaWidget from './ExpediaWidget';
@@ -471,12 +471,11 @@ const SearchWidget = () => {
         {/* ETIHAD UI */}
         {activeTab === 'etihad' && (
           <div className="etihad-ui fade-in" style={{ textAlign: 'center', padding: '2rem 1rem' }}>
-            <img 
-              src="https://logo.clearbit.com/etihad.com" 
-              alt="Etihad Airways" 
-              style={{ height: '60px', marginBottom: '1.5rem', borderRadius: '8px' }} 
-              onError={(e) => { e.target.onerror = null; e.target.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Etihad_Airways_Logo.svg/512px-Etihad_Airways_Logo.svg.png'; }}
-            />
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+              <div style={{ background: 'linear-gradient(135deg, #d4a373 0%, #b5835a 100%)', padding: '1rem', borderRadius: '50%', boxShadow: '0 10px 25px rgba(212, 163, 115, 0.3)' }}>
+                <Crown size={40} color="white" />
+              </div>
+            </div>
             <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Fly Premium with Etihad Airways</h3>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', maxWidth: '500px', margin: '0 auto 1.5rem' }}>
               Experience world-class luxury and comfort. Book directly with Etihad Airways for your next international journey.
