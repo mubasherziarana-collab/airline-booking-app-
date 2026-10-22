@@ -503,34 +503,42 @@ const SearchWidget = () => {
 
         {/* 24/7 CALL DESK UI (MARKETCALL) */}
         {activeTab === 'calldesk' && (
-          <div className="calldesk-ui fade-in" style={{ textAlign: 'center', padding: '2rem 1rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
-              <div style={{ background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', padding: '1rem', borderRadius: '50%', boxShadow: '0 10px 25px rgba(16, 185, 129, 0.3)' }}>
-                <PhoneCall size={38} color="white" />
+          <div className="calldesk-ui fade-in" style={{ textAlign: 'center', padding: '2.5rem 1.5rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.25rem' }}>
+              <div style={{ background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', padding: '1.1rem', borderRadius: '50%', boxShadow: '0 12px 28px rgba(16, 185, 129, 0.35)' }}>
+                <PhoneCall size={42} color="white" />
               </div>
             </div>
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>24/7 Live Flight Booking Desk</h3>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', maxWidth: '520px', margin: '0 auto 1.5rem' }}>
-              Prefer to book over the phone with a live airline specialist? Get instant access to unpublished wholesale fares, flexible date changes, and 24/7 reservation support.
+            <h3 style={{ fontSize: '1.65rem', fontWeight: '800', marginBottom: '0.65rem', color: 'var(--text-primary)' }}>
+              24/7 Live Flight Booking Desk
+            </h3>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.75rem', maxWidth: '540px', margin: '0 auto 1.75rem', fontSize: '1.02rem', lineHeight: '1.6' }}>
+              Prefer to book directly with a certified flight reservation agent? Call our live desk for unpublished wholesale fares, instant group discounts, and immediate date modifications.
             </p>
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
               <a 
                 href="tel:+18882175712" 
                 className="btn btn-primary search-btn" 
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '1rem 2rem', textDecoration: 'none', backgroundColor: '#059669', borderColor: '#059669' }}
+                style={{ 
+                  display: 'inline-flex', 
+                  alignItems: 'center', 
+                  gap: '0.75rem', 
+                  padding: '1.15rem 2.5rem', 
+                  fontSize: '1.2rem',
+                  fontWeight: '700',
+                  textDecoration: 'none', 
+                  backgroundColor: '#059669', 
+                  borderColor: '#059669',
+                  borderRadius: '9999px',
+                  boxShadow: '0 8px 25px rgba(5, 150, 105, 0.35)'
+                }}
               >
-                <PhoneCall size={18} />
+                <PhoneCall size={22} className="phone-icon-pulse" />
                 <span>Call 1-888-217-5712</span>
               </a>
-              <a 
-                href="https://x9.ru/landing/629f3c70a88aa8.80181743?programId=358822" 
-                className="btn btn-secondary" 
-                style={{ display: 'inline-flex', alignItems: 'center', padding: '1rem 1.8rem', textDecoration: 'none', background: 'rgba(255,255,255,0.08)', border: '1px solid var(--border-color)', borderRadius: '8px', color: 'var(--text-primary)', fontWeight: '600' }}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span>View Flight Deals Online</span>
-              </a>
+              <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
+                Toll-Free • Available 24/7 • Instant Flight Specialists
+              </span>
             </div>
           </div>
         )}
