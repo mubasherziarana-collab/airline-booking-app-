@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Users, Search, Plane, Hotel, Car, Ticket, Map, Crown } from 'lucide-react';
+import { Calendar, Users, Search, Plane, Hotel, Car, Ticket, Map, Crown, PhoneCall } from 'lucide-react';
 import CityAutocomplete from './CityAutocomplete';
 import KiwiWidget from './KiwiWidget';
 import ExpediaWidget from './ExpediaWidget';
@@ -201,6 +201,15 @@ const SearchWidget = () => {
         >
           <Plane size={20} />
           <span>Etihad</span>
+        </button>
+        <button 
+          className={`main-tab ${activeTab === 'calldesk' ? 'active' : ''}`}
+          onClick={() => setActiveTab('calldesk')}
+          type="button"
+          style={{ borderColor: 'rgba(74, 222, 128, 0.5)' }}
+        >
+          <PhoneCall size={20} color="#4ade80" />
+          <span>Call Desk</span>
         </button>
       </div>
 
@@ -489,6 +498,40 @@ const SearchWidget = () => {
             >
               <span>Book with Etihad</span>
             </a>
+          </div>
+        )}
+
+        {/* 24/7 CALL DESK UI (MARKETCALL) */}
+        {activeTab === 'calldesk' && (
+          <div className="calldesk-ui fade-in" style={{ textAlign: 'center', padding: '2rem 1rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+              <div style={{ background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', padding: '1rem', borderRadius: '50%', boxShadow: '0 10px 25px rgba(16, 185, 129, 0.3)' }}>
+                <PhoneCall size={38} color="white" />
+              </div>
+            </div>
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>24/7 Live Flight Booking Desk</h3>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', maxWidth: '520px', margin: '0 auto 1.5rem' }}>
+              Prefer to book over the phone with a live airline specialist? Get instant access to unpublished wholesale fares, flexible date changes, and 24/7 reservation support.
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a 
+                href="tel:+18882175712" 
+                className="btn btn-primary search-btn" 
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '1rem 2rem', textDecoration: 'none', backgroundColor: '#059669', borderColor: '#059669' }}
+              >
+                <PhoneCall size={18} />
+                <span>Call 1-888-217-5712</span>
+              </a>
+              <a 
+                href="https://x9.ru/landing/629f3c70a88aa8.80181743?programId=358822" 
+                className="btn btn-secondary" 
+                style={{ display: 'inline-flex', alignItems: 'center', padding: '1rem 1.8rem', textDecoration: 'none', background: 'rgba(255,255,255,0.08)', border: '1px solid var(--border-color)', borderRadius: '8px', color: 'var(--text-primary)', fontWeight: '600' }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>View Flight Deals Online</span>
+              </a>
+            </div>
           </div>
         )}
 
