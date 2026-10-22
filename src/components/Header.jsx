@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plane, Car, Hotel, Compass, Menu } from 'lucide-react';
+import { Plane, Car, Hotel, Compass, Menu, PhoneCall } from 'lucide-react';
 
 const Header = () => {
   return (
@@ -43,6 +43,13 @@ const Header = () => {
         </nav>
         
         <div className="header-actions">
+          <a href="tel:+18882175712" className="call-agent-btn">
+            <PhoneCall size={18} className="phone-icon-pulse" />
+            <div className="call-agent-text">
+              <span className="call-label">24/7 Phone Booking</span>
+              <span className="call-number">1-888-217-5712</span>
+            </div>
+          </a>
           <button className="mobile-menu-btn">
             <Menu size={24} />
           </button>
@@ -140,6 +147,67 @@ const Header = () => {
           display: flex;
           align-items: center;
           gap: 1rem;
+        }
+
+        .call-agent-btn {
+          display: flex;
+          align-items: center;
+          gap: 0.65rem;
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.35);
+          padding: 0.45rem 1rem;
+          border-radius: 9999px;
+          color: white;
+          text-decoration: none;
+          transition: all 0.25s ease;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .call-agent-btn:hover {
+          background: white;
+          color: #0b57d0;
+          border-color: white;
+          transform: translateY(-1px);
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .call-agent-btn:hover .call-label {
+          color: #575757;
+        }
+
+        .phone-icon-pulse {
+          color: #4ade80;
+          animation: pulse-ring 2s infinite;
+        }
+
+        @keyframes pulse-ring {
+          0% { transform: scale(0.95); opacity: 0.8; }
+          50% { transform: scale(1.15); opacity: 1; }
+          100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        .call-agent-text {
+          display: flex;
+          flex-direction: column;
+          line-height: 1.15;
+          text-align: left;
+        }
+
+        .call-label {
+          font-size: 0.65rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          font-weight: 600;
+          color: rgba(255, 255, 255, 0.85);
+          transition: color 0.25s ease;
+        }
+
+        .call-number {
+          font-size: 0.88rem;
+          font-weight: 700;
+          letter-spacing: 0.3px;
         }
         
         .mobile-menu-btn {
