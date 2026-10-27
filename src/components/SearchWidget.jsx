@@ -179,28 +179,12 @@ const SearchWidget = () => {
           <span>Kiwi.com</span>
         </button>
         <button 
-          className={`main-tab ${activeTab === 'cheapoair' ? 'active' : ''}`}
-          onClick={() => setActiveTab('cheapoair')}
-          type="button"
-        >
-          <Ticket size={20} />
-          <span>CheapOair</span>
-        </button>
-        <button 
           className={`main-tab ${activeTab === 'expedia' ? 'active' : ''}`}
           onClick={() => setActiveTab('expedia')}
           type="button"
         >
           <Map size={20} />
           <span>Expedia</span>
-        </button>
-        <button 
-          className={`main-tab ${activeTab === 'etihad' ? 'active' : ''}`}
-          onClick={() => setActiveTab('etihad')}
-          type="button"
-        >
-          <Plane size={20} />
-          <span>Etihad</span>
         </button>
         <button 
           className={`main-tab ${activeTab === 'calldesk' ? 'active' : ''}`}
@@ -450,54 +434,10 @@ const SearchWidget = () => {
           </div>
         )}
 
-        {/* CHEAPOAIR UI */}
-        {activeTab === 'cheapoair' && (
-          <div className="cheapoair-ui fade-in" style={{ textAlign: 'center', padding: '2rem 1rem' }}>
-            <Ticket size={48} color="var(--primary-color)" style={{ marginBottom: '1rem' }} />
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Compare Exclusive Deals on CheapOair</h3>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', maxWidth: '500px', margin: '0 auto 1.5rem' }}>
-              We partner with CheapOair to bring you massive discounts on last-minute flights and international travel. 
-            </p>
-            <a 
-              href="https://www.cheapoair.com" 
-              className="btn btn-primary search-btn" 
-              style={{ display: 'inline-flex', padding: '1rem 2rem', textDecoration: 'none' }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span>Search on CheapOair</span>
-            </a>
-          </div>
-        )}
-
         {/* EXPEDIA UI */}
         {activeTab === 'expedia' && (
           <div className="expedia-ui fade-in">
             <ExpediaWidget />
-          </div>
-        )}
-
-        {/* ETIHAD UI */}
-        {activeTab === 'etihad' && (
-          <div className="etihad-ui fade-in" style={{ textAlign: 'center', padding: '2rem 1rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
-              <div style={{ background: 'linear-gradient(135deg, #d4a373 0%, #b5835a 100%)', padding: '1rem', borderRadius: '50%', boxShadow: '0 10px 25px rgba(212, 163, 115, 0.3)' }}>
-                <Crown size={40} color="white" />
-              </div>
-            </div>
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Fly Premium with Etihad Airways</h3>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', maxWidth: '500px', margin: '0 auto 1.5rem' }}>
-              Experience world-class luxury and comfort. Book directly with Etihad Airways for your next international journey.
-            </p>
-            <a 
-              href="https://www.etihad.com" 
-              className="btn btn-primary search-btn" 
-              style={{ display: 'inline-flex', padding: '1rem 2rem', textDecoration: 'none', backgroundColor: '#333333', borderColor: '#333333' }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span>Book with Etihad</span>
-            </a>
           </div>
         )}
 
@@ -517,7 +457,7 @@ const SearchWidget = () => {
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
               <a 
-                href="tel:+18882175712" 
+                href="tel:+18882982636" 
                 className="btn btn-primary search-btn" 
                 style={{ 
                   display: 'inline-flex', 
@@ -534,7 +474,7 @@ const SearchWidget = () => {
                 }}
               >
                 <PhoneCall size={22} className="phone-icon-pulse" />
-                <span>Call 1-888-217-5712</span>
+                <span>Call 1-888-298-2636</span>
               </a>
               <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
                 Toll-Free • Available 24/7 • Instant Flight Specialists
