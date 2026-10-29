@@ -18,6 +18,58 @@
     <meta name="keywords" content="flights, airline tickets, cheap flights, hotels, car rentals, travel, booking" />
     <meta name="author" content="MyFlyOra" />
     <link rel="canonical" href="https://myflyora.com/" />
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://myflyora.com/" />
+    <meta property="og:title" content="MyFlyOra | Search Cheap Flights, Hotels & Car Rentals" />
+    <meta property="og:description" content="Compare real-time airline ticket prices, hotel discounts, and car rentals across major travel providers with zero added fees." />
+    <meta property="og:site_name" content="MyFlyOra" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MyFlyOra | Compare & Book Cheap Flights Worldwide" />
+    <meta name="twitter:description" content="Search hundreds of travel sites and airlines in seconds. 24/7 flight reservation assistance." />
+
+    <!-- JSON-LD Structured Data Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://myflyora.com/#website",
+          "url": "https://myflyora.com/",
+          "name": "MyFlyOra",
+          "description": "Global travel comparison and flight booking aggregator",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://myflyora.com/?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "TravelAgency",
+          "@id": "https://myflyora.com/#organization",
+          "name": "MyFlyOra",
+          "url": "https://myflyora.com/",
+          "logo": "https://myflyora.com/favicon.svg",
+          "description": "Meta-search travel aggregator and flight booking assistance service providing real-time comparisons on airfares, hotels, and vehicle rentals.",
+          "telephone": "+1-888-298-2636",
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+1-888-298-2636",
+              "contactType": "customer service",
+              "contactOption": "TollFree",
+              "areaServed": ["US", "CA", "Worldwide"],
+              "availableLanguage": ["English"]
+            }
+          ]
+        }
+      ]
+    }
+    </script>
     <!-- Skimlinks Script -->
     <script type="text/javascript" src="https://s.skimresources.com/js/308866X1797188.skimlinks.js"></script>
 
