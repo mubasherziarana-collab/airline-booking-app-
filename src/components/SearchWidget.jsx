@@ -477,7 +477,7 @@ const SearchWidget = () => {
                 <span>Call 1-888-298-2636</span>
               </a>
               <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
-                Toll-Free • Available 24/7 • Instant Flight Specialists
+                US Callers Only • Toll-Free • Available 24/7 • Instant Flight Specialists
               </span>
             </div>
           </div>

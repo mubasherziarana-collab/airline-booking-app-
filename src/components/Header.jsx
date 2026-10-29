@@ -46,7 +46,7 @@ const Header = () => {
           <a href="tel:+18882982636" className="call-agent-btn">
             <PhoneCall size={18} className="phone-icon-pulse" />
             <div className="call-agent-text">
-              <span className="call-label">24/7 Phone Booking</span>
+              <span className="call-label">US Only • 24/7 Booking</span>
               <span className="call-number">1-888-298-2636</span>
             </div>
           </a>
