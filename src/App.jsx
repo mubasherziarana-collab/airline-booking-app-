@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import PopularDestinations from './components/PopularDestinations';
+import PopularRoutesAndFAQ from './components/PopularRoutesAndFAQ';
 import Footer from './components/Footer';
 import AboutUs from './components/AboutUs';
 
@@ -25,6 +26,7 @@ function App() {
           <>
             <Hero />
             <PopularDestinations />
+            <PopularRoutesAndFAQ />
           </>
         ) : (
           <AboutUs />
