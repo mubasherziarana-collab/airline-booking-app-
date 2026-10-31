@@ -275,8 +275,8 @@ const AIChatAssistant = () => {
       <style>{`
         .ai-chat-root {
           position: fixed;
-          bottom: 24px;
-          right: 24px;
+          top: 90px;
+          left: 24px;
           z-index: 9999;
           font-family: inherit;
         }
@@ -287,20 +287,21 @@ const AIChatAssistant = () => {
           gap: 0.6rem;
           background: linear-gradient(135deg, #0b57d0 0%, #1e40af 100%);
           color: white;
-          border: none;
-          padding: 0.85rem 1.4rem;
+          border: 2px solid rgba(255, 255, 255, 0.4);
+          padding: 0.75rem 1.35rem;
           border-radius: 9999px;
           cursor: pointer;
           font-weight: 700;
           font-size: 0.95rem;
-          box-shadow: 0 10px 25px rgba(11, 87, 208, 0.4);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
           transition: all 0.25s ease;
           position: relative;
         }
 
         .ai-chat-toggle-btn:hover {
-          transform: translateY(-2px) scale(1.02);
-          box-shadow: 0 14px 30px rgba(11, 87, 208, 0.5);
+          transform: translateY(-2px) scale(1.03);
+          box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
+          border-color: white;
         }
 
         .toggle-inner {
@@ -335,20 +336,28 @@ const AIChatAssistant = () => {
           width: 380px;
           height: 540px;
           max-width: calc(100vw - 32px);
-          max-height: calc(100vh - 48px);
+          max-height: calc(100vh - 120px);
           background: white;
           border-radius: 20px;
-          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
           display: flex;
           flex-direction: column;
           overflow: hidden;
           border: 1px solid rgba(0, 0, 0, 0.08);
-          animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+          animation: scaleUpTopLeft 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        @keyframes scaleUp {
-          from { opacity: 0; transform: scale(0.9) translateY(20px); }
+        @keyframes scaleUpTopLeft {
+          from { opacity: 0; transform: scale(0.9) translateY(-10px); }
           to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+          .ai-chat-root {
+            top: auto;
+            bottom: 20px;
+            left: 16px;
+          }
         }
 
         .chat-header {
