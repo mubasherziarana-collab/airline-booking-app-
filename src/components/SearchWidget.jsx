@@ -180,12 +180,13 @@ const SearchWidget = () => {
           <span>Kiwi.com</span>
         </button>
         <button 
-          className={`main-tab ${activeTab === 'calendar' ? 'active' : ''}`}
+          className={`main-tab calendar-tab-featured ${activeTab === 'calendar' ? 'active' : ''}`}
           onClick={() => setActiveTab('calendar')}
           type="button"
         >
-          <CalendarDays size={20} />
+          <CalendarDays size={20} className="calendar-icon-glow" />
           <span>Low Fare Calendar</span>
+          <span className="live-pill">🔥 CHEAPEST</span>
         </button>
         <button 
           className={`main-tab ${activeTab === 'expedia' ? 'active' : ''}`}
@@ -550,6 +551,62 @@ const SearchWidget = () => {
           color: var(--primary-color);
           background: white;
           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .calendar-tab-featured {
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(254, 240, 138, 0.3) 100%);
+          border: 1.5px solid rgba(250, 204, 21, 0.8) !important;
+          box-shadow: 0 0 15px rgba(250, 204, 21, 0.3);
+          position: relative;
+        }
+
+        .calendar-tab-featured:hover {
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(254, 240, 138, 0.45) 100%);
+          border-color: #fde047 !important;
+          transform: translateY(-1px);
+        }
+
+        .calendar-tab-featured.active {
+          background: white !important;
+          border-color: #f59e0b !important;
+          color: #d97706 !important;
+          box-shadow: 0 6px 20px rgba(245, 158, 11, 0.25) !important;
+        }
+
+        .calendar-icon-glow {
+          color: #fef08a;
+          animation: gentle-sparkle 2.5s infinite;
+        }
+
+        .calendar-tab-featured.active .calendar-icon-glow {
+          color: #f59e0b;
+        }
+
+        .live-pill {
+          font-size: 0.65rem;
+          font-weight: 800;
+          letter-spacing: 0.5px;
+          background: #ef4444;
+          color: white;
+          padding: 0.2rem 0.5rem;
+          border-radius: 9999px;
+          margin-left: 0.25rem;
+          box-shadow: 0 2px 6px rgba(239, 68, 68, 0.4);
+          animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+          0% { transform: scale(1); opacity: 0.95; }
+          50% { transform: scale(1.08); opacity: 1; }
+          100% { transform: scale(1); opacity: 0.95; }
+        }
+
+        @keyframes gentle-sparkle {
+          0% { transform: rotate(0deg); }
+          20% { transform: rotate(-8deg); }
+          40% { transform: rotate(8deg); }
+          60% { transform: rotate(0deg); }
+          100% { transform: rotate(0deg); }
         }
 
         .trip-type-toggle {
