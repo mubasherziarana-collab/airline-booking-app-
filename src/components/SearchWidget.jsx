@@ -117,8 +117,20 @@ const SearchWidget = () => {
   useEffect(() => {
     const handleSetDestination = (e) => {
       setActiveTab('flights');
-      setDestination(e.detail);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (e.detail.origin) {
+        setOrigin(e.detail.origin);
+      }
+      if (e.detail.destination) {
+        setDestination(e.detail.destination);
+      } else {
+        setDestination(e.detail);
+      }
+      const widgetElement = document.getElementById('search-widget');
+      if (widgetElement) {
+        widgetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        window.scrollTo({ top: 150, behavior: 'smooth' });
+      }
     };
     
     const handleActivateHotels = () => {

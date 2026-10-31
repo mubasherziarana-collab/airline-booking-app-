@@ -2,12 +2,72 @@ import React, { useState } from 'react';
 import { Plane, ChevronDown, PhoneCall, ShieldCheck, Clock, DollarSign } from 'lucide-react';
 
 const routes = [
-  { from: 'New York (JFK)', to: 'London (LHR)', code: 'LON', price: 'from $389', duration: '7h 10m', type: 'Direct / Daily' },
-  { from: 'Toronto (YYZ)', to: 'Dubai (DXB)', code: 'DXB', price: 'from $699', duration: '12h 45m', type: 'Popular International' },
-  { from: 'Chicago (ORD)', to: 'Istanbul (IST)', code: 'IST', price: 'from $540', duration: '10h 20m', type: 'Top Connection' },
-  { from: 'Los Angeles (LAX)', to: 'Tokyo (TYO)', code: 'TYO', price: 'from $599', duration: '11h 30m', type: 'Transpacific Nonstop' },
-  { from: 'London (LHR)', to: 'Singapore (SIN)', code: 'SIN', price: 'from $520', duration: '12h 50m', type: 'Direct Hub' },
-  { from: 'New York (JFK)', to: 'Sao Paulo (GRU)', code: 'SAO', price: 'from $610', duration: '9h 35m', type: 'South America' }
+  { 
+    from: 'New York (JFK)', 
+    to: 'London (LHR)', 
+    originCode: 'JFK', 
+    originName: 'New York (JFK)', 
+    destCode: 'LON', 
+    destName: 'London (LON)', 
+    price: 'from $389', 
+    duration: '7h 10m', 
+    type: 'Direct / Daily' 
+  },
+  { 
+    from: 'Toronto (YYZ)', 
+    to: 'Dubai (DXB)', 
+    originCode: 'YYZ', 
+    originName: 'Toronto (YYZ)', 
+    destCode: 'DXB', 
+    destName: 'Dubai (DXB)', 
+    price: 'from $699', 
+    duration: '12h 45m', 
+    type: 'Popular International' 
+  },
+  { 
+    from: 'Chicago (ORD)', 
+    to: 'Istanbul (IST)', 
+    originCode: 'ORD', 
+    originName: 'Chicago (ORD)', 
+    destCode: 'IST', 
+    destName: 'Istanbul (IST)', 
+    price: 'from $540', 
+    duration: '10h 20m', 
+    type: 'Top Connection' 
+  },
+  { 
+    from: 'Los Angeles (LAX)', 
+    to: 'Tokyo (TYO)', 
+    originCode: 'LAX', 
+    originName: 'Los Angeles (LAX)', 
+    destCode: 'TYO', 
+    destName: 'Tokyo (TYO)', 
+    price: 'from $599', 
+    duration: '11h 30m', 
+    type: 'Transpacific Nonstop' 
+  },
+  { 
+    from: 'London (LHR)', 
+    to: 'Singapore (SIN)', 
+    originCode: 'LHR', 
+    originName: 'London (LHR)', 
+    destCode: 'SIN', 
+    destName: 'Singapore (SIN)', 
+    price: 'from $520', 
+    duration: '12h 50m', 
+    type: 'Direct Hub' 
+  },
+  { 
+    from: 'New York (JFK)', 
+    to: 'Sao Paulo (GRU)', 
+    originCode: 'JFK', 
+    originName: 'New York (JFK)', 
+    destCode: 'SAO', 
+    destName: 'Sao Paulo (SAO)', 
+    price: 'from $610', 
+    duration: '9h 35m', 
+    type: 'South America' 
+  }
 ];
 
 const faqs = [
@@ -36,13 +96,15 @@ const PopularRoutesAndFAQ = () => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  const handleRouteClick = (code, city, e) => {
+  const handleRouteClick = (route, e) => {
     e.preventDefault();
     const event = new CustomEvent('setDestination', { 
-      detail: { code, name: `${city} (${code})` } 
+      detail: { 
+        origin: { code: route.originCode, name: route.originName },
+        destination: { code: route.destCode, name: route.destName }
+      } 
     });
     window.dispatchEvent(event);
-    window.scrollTo({ top: 400, behavior: 'smooth' });
   };
 
   return (
@@ -63,7 +125,7 @@ const PopularRoutesAndFAQ = () => {
             <div 
               key={idx} 
               className="route-card"
-              onClick={(e) => handleRouteClick(route.code, route.to.split(' ')[0], e)}
+              onClick={(e) => handleRouteClick(route, e)}
             >
               <div className="route-header">
                 <div className="route-cities">
