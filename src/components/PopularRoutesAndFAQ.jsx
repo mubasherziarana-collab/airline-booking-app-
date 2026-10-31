@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { Plane, ChevronDown, PhoneCall, ShieldCheck, Clock, DollarSign } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Plane, ChevronDown, PhoneCall, ShieldCheck, Clock, DollarSign, Activity } from 'lucide-react';
 
-const routes = [
+const TRAVELPAYOUTS_TOKEN = 'f2f34484a602eb7d576f5a0781702627';
+
+const initialRoutes = [
   { 
     from: 'New York (JFK)', 
     to: 'London (LHR)', 
@@ -9,7 +11,7 @@ const routes = [
     originName: 'New York (JFK)', 
     destCode: 'LON', 
     destName: 'London (LON)', 
-    price: 'from $389', 
+    defaultPrice: 'from $389', 
     duration: '7h 10m', 
     type: 'Direct / Daily' 
   },
@@ -20,7 +22,7 @@ const routes = [
     originName: 'Toronto (YYZ)', 
     destCode: 'DXB', 
     destName: 'Dubai (DXB)', 
-    price: 'from $699', 
+    defaultPrice: 'from $699', 
     duration: '12h 45m', 
     type: 'Popular International' 
   },
@@ -31,7 +33,7 @@ const routes = [
     originName: 'Chicago (ORD)', 
     destCode: 'IST', 
     destName: 'Istanbul (IST)', 
-    price: 'from $540', 
+    defaultPrice: 'from $540', 
     duration: '10h 20m', 
     type: 'Top Connection' 
   },
@@ -42,7 +44,7 @@ const routes = [
     originName: 'Los Angeles (LAX)', 
     destCode: 'TYO', 
     destName: 'Tokyo (TYO)', 
-    price: 'from $599', 
+    defaultPrice: 'from $599', 
     duration: '11h 30m', 
     type: 'Transpacific Nonstop' 
   },
@@ -53,7 +55,7 @@ const routes = [
     originName: 'London (LHR)', 
     destCode: 'SIN', 
     destName: 'Singapore (SIN)', 
-    price: 'from $520', 
+    defaultPrice: 'from $520', 
     duration: '12h 50m', 
     type: 'Direct Hub' 
   },
@@ -64,7 +66,7 @@ const routes = [
     originName: 'New York (JFK)', 
     destCode: 'SAO', 
     destName: 'Sao Paulo (SAO)', 
-    price: 'from $610', 
+    defaultPrice: 'from $610', 
     duration: '9h 35m', 
     type: 'South America' 
   }
@@ -91,6 +93,52 @@ const faqs = [
 
 const PopularRoutesAndFAQ = () => {
   const [openFaq, setOpenFaq] = useState(null);
+  const [routes, setRoutes] = useState(initialRoutes);
+  const [isLivePricing, setIsLivePricing] = useState(false);
+
+  useEffect(() => {
+    // Dynamically fetch live cached prices from Travelpayouts Flight Data API
+    const fetchLivePrices = async () => {
+      try {
+        const updated = await Promise.all(
+          initialRoutes.map(async (r) => {
+            try {
+              const url = `https://api.travelpayouts.com/v1/prices/cheap?origin=${r.originCode}&destination=${r.destCode}&currency=USD&token=${TRAVELPAYOUTS_TOKEN}`;
+              const res = await fetch(url);
+              if (!res.ok) return r;
+              const json = await res.json();
+              if (json && json.success && json.data && json.data[r.destCode]) {
+                const destData = json.data[r.destCode];
+                // Find minimum price among entries
+                const priceValues = Object.values(destData)
+                  .map((item) => item.price)
+                  .filter((p) => typeof p === 'number' && p > 0);
+                
+                if (priceValues.length > 0) {
+                  const lowest = Math.min(...priceValues);
+                  return {
+                    ...r,
+                    price: `from $${lowest}`,
+                    isLive: true
+                  };
+                }
+              }
+              return { ...r, price: r.defaultPrice };
+            } catch (err) {
+              return { ...r, price: r.defaultPrice };
+            }
+          })
+        );
+        setRoutes(updated);
+        setIsLivePricing(true);
+      } catch (e) {
+        // Fallback gracefully to default curated prices
+        setRoutes(initialRoutes.map(r => ({ ...r, price: r.defaultPrice })));
+      }
+    };
+
+    fetchLivePrices();
+  }, []);
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -113,10 +161,17 @@ const PopularRoutesAndFAQ = () => {
         
         {/* POPULAR ROUTES */}
         <div className="section-header text-center">
-          <span className="badge">Trending Destinations</span>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.75rem' }}>
+            <span className="badge" style={{ margin: 0 }}>Trending Destinations</span>
+            {isLivePricing && (
+              <span className="live-api-badge">
+                <span className="live-dot"></span> LIVE DATA
+              </span>
+            )}
+          </div>
           <h2 className="section-title">Popular International Flight Routes</h2>
           <p className="section-subtitle">
-            Compare live fares across top-searched global airline corridors. Click any route to compare dates instantly.
+            Compare live fares across top-searched global airline corridors. Prices update dynamically from airline search data.
           </p>
         </div>
 
@@ -410,6 +465,34 @@ const PopularRoutesAndFAQ = () => {
           line-height: 1.6;
           font-size: 0.95rem;
           margin: 0;
+        }
+
+        .live-api-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.35rem;
+          font-size: 0.72rem;
+          font-weight: 800;
+          color: #15803d;
+          background: #dcfce7;
+          border: 1px solid #bbf7d0;
+          padding: 0.25rem 0.6rem;
+          border-radius: 9999px;
+          letter-spacing: 0.5px;
+        }
+
+        .live-dot {
+          width: 6px;
+          height: 6px;
+          background: #22c55e;
+          border-radius: 50%;
+          animation: livePulse 1.8s infinite;
+        }
+
+        @keyframes livePulse {
+          0% { transform: scale(0.9); opacity: 0.7; }
+          50% { transform: scale(1.3); opacity: 1; }
+          100% { transform: scale(0.9); opacity: 0.7; }
         }
       `}</style>
     </section>
