@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import PopularDestinations from './components/PopularDestinations';
 import PopularRoutesAndFAQ from './components/PopularRoutesAndFAQ';
+import AIChatAssistant from './components/AIChatAssistant';
 import Footer from './components/Footer';
 import AboutUs from './components/AboutUs';
 
@@ -32,6 +33,7 @@ function App() {
           <AboutUs />
         )}
       </main>
+      <AIChatAssistant />
       <Footer />
     </div>
   );
