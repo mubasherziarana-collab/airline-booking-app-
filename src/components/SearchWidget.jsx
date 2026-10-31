@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Users, Search, Plane, Hotel, Car, Ticket, Map, Crown, PhoneCall } from 'lucide-react';
+import { Calendar, Users, Search, Plane, Hotel, Car, Ticket, Map, Crown, PhoneCall, CalendarDays } from 'lucide-react';
 import CityAutocomplete from './CityAutocomplete';
 import KiwiWidget from './KiwiWidget';
 import ExpediaWidget from './ExpediaWidget';
+import CalendarWidget from './CalendarWidget';
 
 const SearchWidget = () => {
   // Main Tab State
@@ -177,6 +178,14 @@ const SearchWidget = () => {
         >
           <Plane size={20} />
           <span>Kiwi.com</span>
+        </button>
+        <button 
+          className={`main-tab ${activeTab === 'calendar' ? 'active' : ''}`}
+          onClick={() => setActiveTab('calendar')}
+          type="button"
+        >
+          <CalendarDays size={20} />
+          <span>Low Fare Calendar</span>
         </button>
         <button 
           className={`main-tab ${activeTab === 'expedia' ? 'active' : ''}`}
@@ -431,6 +440,13 @@ const SearchWidget = () => {
         {activeTab === 'kiwi' && (
           <div className="kiwi-ui fade-in">
             <KiwiWidget />
+          </div>
+        )}
+
+        {/* LOW FARE CALENDAR UI */}
+        {activeTab === 'calendar' && (
+          <div className="calendar-ui fade-in">
+            <CalendarWidget />
           </div>
         )}
 
