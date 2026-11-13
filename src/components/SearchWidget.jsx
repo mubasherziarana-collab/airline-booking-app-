@@ -486,7 +486,7 @@ const SearchWidget = () => {
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
               <a 
-                href="tel:+18882982636" 
+                href="tel:+18442135792" 
                 className="btn btn-primary search-btn" 
                 style={{ 
                   display: 'inline-flex', 
@@ -503,8 +503,23 @@ const SearchWidget = () => {
                 }}
               >
                 <PhoneCall size={22} className="phone-icon-pulse" />
-                <span>Call 1-888-298-2636</span>
+                <span>Call 1-844-213-5792</span>
               </a>
+
+              {/* Trust & Review Badges */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', marginTop: '1rem', flexWrap: 'wrap' }}>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', background: 'rgba(0, 182, 122, 0.1)', border: '1px solid #00b67a', padding: '0.35rem 0.85rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: '600', color: '#00b67a' }}>
+                  <span>★ Trustpilot</span>
+                  <span style={{ color: '#fff', background: '#00b67a', padding: '1px 6px', borderRadius: '4px', fontSize: '0.75rem' }}>4.8 / 5</span>
+                  <span style={{ color: 'var(--text-secondary)' }}>• Verified Partner</span>
+                </div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', background: 'rgba(66, 133, 244, 0.1)', border: '1px solid #4285f4', padding: '0.35rem 0.85rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: '600', color: '#4285f4' }}>
+                  <span>Google Reviews</span>
+                  <span style={{ color: '#fff', background: '#4285f4', padding: '1px 6px', borderRadius: '4px', fontSize: '0.75rem' }}>4.9 ★</span>
+                  <span style={{ color: 'var(--text-secondary)' }}>• 100% Secure Desk</span>
+                </div>
+              </div>
+
               <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
                 US Callers Only • Toll-Free • Available 24/7 • Instant Flight Specialists
               </span>

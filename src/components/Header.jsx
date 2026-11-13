@@ -43,11 +43,11 @@ const Header = () => {
         </nav>
         
         <div className="header-actions">
-          <a href="tel:+18882982636" className="call-agent-btn">
+          <a href="tel:+18442135792" className="call-agent-btn">
             <PhoneCall size={18} className="phone-icon-pulse" />
             <div className="call-agent-text">
-              <span className="call-label">US Only • 24/7 Booking</span>
-              <span className="call-number">1-888-298-2636</span>
+              <span className="call-label">★ 4.8 Trustpilot • 24/7 Booking</span>
+              <span className="call-number">1-844-213-5792</span>
             </div>
           </a>
           <button className="mobile-menu-btn">

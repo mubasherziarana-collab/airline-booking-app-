@@ -79,7 +79,7 @@ const faqs = [
   },
   {
     question: 'Can I book flights over the phone with a live agent?',
-    answer: 'Yes! MyFlyOra provides a dedicated 24/7 flight reservation phone desk at 1-888-298-2636. If you are booking complex international multi-city routes, group travel, or need immediate assistance with unpublished wholesale fares, our certified reservation specialists are available around the clock.'
+    answer: 'Yes! MyFlyOra provides a dedicated 24/7 flight reservation phone desk at 1-844-213-5792. If you are booking complex international multi-city routes, group travel, or need immediate assistance with unpublished wholesale fares, our certified reservation specialists are available around the clock.'
   },
   {
     question: 'Does MyFlyOra charge any extra booking fees?',
@@ -220,7 +220,7 @@ const PopularRoutesAndFAQ = () => {
             <PhoneCall size={28} className="trust-icon" />
             <div>
               <h4>24/7 Live Desk</h4>
-              <p>Direct assistance via 1-888-298-2636</p>
+              <p>Direct assistance via 1-844-213-5792</p>
             </div>
           </div>
         </div>

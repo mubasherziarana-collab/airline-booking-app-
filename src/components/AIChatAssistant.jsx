@@ -130,7 +130,7 @@ const AIChatAssistant = () => {
       } else if (lower.includes('call') || lower.includes('phone') || lower.includes('agent')) {
         aiResponse = {
           sender: 'ai',
-          text: `Need to book with a live specialist? Our 24/7 US flight reservation desk is available toll-free at **1-888-298-2636**!`
+          text: `Need to book with a live specialist? Our 24/7 US flight reservation desk is available toll-free at **1-844-213-5792**!`
         };
       } else {
         aiResponse = {
