@@ -535,6 +535,7 @@ const SearchWidget = () => {
           flex-direction: column;
           align-items: center;
           width: 100%;
+          max-width: 100%;
         }
 
         .fade-in {
@@ -549,10 +550,32 @@ const SearchWidget = () => {
         .main-tabs {
           display: flex;
           background: transparent;
-          padding: 0;
+          padding: 0.25rem 0.5rem 0.75rem 0.5rem;
           margin-bottom: 1rem;
           gap: 0.5rem;
           z-index: 1;
+          width: 100%;
+          max-width: 100%;
+          overflow-x: auto;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: thin;
+          scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+          justify-content: flex-start;
+        }
+
+        .main-tabs::-webkit-scrollbar {
+          height: 4px;
+        }
+
+        .main-tabs::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 9999px;
+        }
+
+        .main-tabs::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.4);
+          border-radius: 9999px;
         }
 
         .main-tab {
@@ -563,11 +586,13 @@ const SearchWidget = () => {
           border: none;
           color: white;
           font-weight: 600;
-          font-size: 1rem;
+          font-size: 0.95rem;
           cursor: pointer;
           padding: 0.75rem 1.25rem;
           border-radius: 12px;
           transition: all 0.2s ease;
+          white-space: nowrap;
+          flex-shrink: 0;
         }
 
         .main-tab:hover {
@@ -793,7 +818,31 @@ const SearchWidget = () => {
           box-shadow: 0 4px 12px rgba(255, 109, 0, 0.3);
         }
         
+        @media (min-width: 1025px) {
+          .main-tabs {
+            justify-content: center;
+            overflow-x: visible;
+          }
+        }
+
         @media (max-width: 1024px) {
+          .main-tabs {
+            justify-content: flex-start;
+            padding: 0.25rem 0.25rem 0.65rem 0.25rem;
+            margin-bottom: 0.75rem;
+          }
+
+          .main-tab {
+            padding: 0.55rem 0.95rem;
+            font-size: 0.88rem;
+            gap: 0.4rem;
+          }
+
+          .search-widget-container {
+            padding: 1.25rem 1rem;
+            border-radius: 14px;
+          }
+
           .search-form {
             flex-direction: column;
             align-items: stretch;

@@ -25,12 +25,16 @@ const Hero = () => {
           flex-direction: column;
           justify-content: center;
           padding-top: 6rem;
+          padding-bottom: 2rem;
           background-color: var(--primary-color);
+          overflow-x: hidden;
+          width: 100%;
         }
         
         .hero-content {
           text-align: center;
           max-width: 900px;
+          width: 100%;
           margin: 0 auto;
           position: relative;
           z-index: 2;
@@ -54,13 +58,15 @@ const Hero = () => {
         
         @media (max-width: 768px) {
           .hero-title {
-            font-size: 2.2rem;
+            font-size: 2.1rem;
           }
           .hero-subtitle {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
           }
           .hero {
-            min-height: 500px;
+            min-height: 480px;
+            padding-top: 5.5rem;
           }
         }
         
@@ -68,6 +74,8 @@ const Hero = () => {
           margin-top: 1rem;
           position: relative;
           z-index: 10;
+          width: 100%;
+          max-width: 100%;
         }
       `}</style>
     </section>

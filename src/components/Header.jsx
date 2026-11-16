@@ -223,6 +223,28 @@ const Header = () => {
             display: none;
           }
         }
+
+        @media (max-width: 480px) {
+          .header-container {
+            gap: 0.5rem;
+          }
+          .logo-text {
+            font-size: 1.25rem;
+          }
+          .logo-slogan {
+            font-size: 0.65rem;
+          }
+          .call-agent-btn {
+            padding: 0.35rem 0.65rem;
+            gap: 0.4rem;
+          }
+          .call-label {
+            font-size: 0.55rem;
+          }
+          .call-number {
+            font-size: 0.78rem;
+          }
+        }
       `}</style>
     </header>
   );
