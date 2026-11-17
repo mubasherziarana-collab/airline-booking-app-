@@ -28,6 +28,14 @@ const SearchWidget = () => {
   const [carLocation, setCarLocation] = useState(null);
   const [carPickUpDate, setCarPickUpDate] = useState('');
   const [carDropOffDate, setCarDropOffDate] = useState('');
+  const [copiedPhone, setCopiedPhone] = useState(false);
+
+  const handleCopyPhone = (e) => {
+    e.preventDefault();
+    navigator.clipboard.writeText('1-844-213-5792');
+    setCopiedPhone(true);
+    setTimeout(() => setCopiedPhone(false), 2500);
+  };
 
   const today = new Date().toISOString().split('T')[0];
   const affiliateMarker = "690809";
@@ -484,30 +492,56 @@ const SearchWidget = () => {
             <p style={{ color: 'var(--text-secondary)', marginBottom: '1.75rem', maxWidth: '540px', margin: '0 auto 1.75rem', fontSize: '1.02rem', lineHeight: '1.6' }}>
               Prefer to book directly with a certified flight reservation agent? Call our live desk for unpublished wholesale fares, instant group discounts, and immediate date modifications.
             </p>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
-              <a 
-                href="tel:+18442135792" 
-                className="btn btn-primary search-btn" 
-                style={{ 
-                  display: 'inline-flex', 
-                  alignItems: 'center', 
-                  gap: '0.75rem', 
-                  padding: '1.15rem 2.5rem', 
-                  fontSize: '1.2rem',
-                  fontWeight: '700',
-                  textDecoration: 'none', 
-                  backgroundColor: '#059669', 
-                  borderColor: '#059669',
-                  borderRadius: '9999px',
-                  boxShadow: '0 8px 25px rgba(5, 150, 105, 0.35)'
-                }}
-              >
-                <PhoneCall size={22} className="phone-icon-pulse" />
-                <span>Call 1-844-213-5792</span>
-              </a>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.85rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                <a 
+                  href="tel:+18442135792" 
+                  className="btn btn-primary search-btn" 
+                  style={{ 
+                    display: 'inline-flex', 
+                    alignItems: 'center', 
+                    gap: '0.75rem', 
+                    padding: '1.15rem 2.25rem', 
+                    fontSize: '1.2rem',
+                    fontWeight: '700',
+                    textDecoration: 'none', 
+                    backgroundColor: '#059669', 
+                    borderColor: '#059669',
+                    borderRadius: '9999px',
+                    boxShadow: '0 8px 25px rgba(5, 150, 105, 0.35)',
+                    cursor: 'pointer'
+                  }}
+                  title="Click to dial 1-844-213-5792 directly or connect via your phone"
+                >
+                  <PhoneCall size={22} className="phone-icon-pulse" />
+                  <span>Call 1-844-213-5792</span>
+                </a>
+
+                <button
+                  type="button"
+                  onClick={handleCopyPhone}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.45rem',
+                    padding: '0.95rem 1.4rem',
+                    fontSize: '0.95rem',
+                    fontWeight: '600',
+                    color: copiedPhone ? '#059669' : '#374151',
+                    backgroundColor: copiedPhone ? 'rgba(16, 185, 129, 0.12)' : '#f1f5f9',
+                    border: `1.5px solid ${copiedPhone ? '#10b981' : '#cbd5e1'}`,
+                    borderRadius: '9999px',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease'
+                  }}
+                  title="Click to copy number to clipboard"
+                >
+                  <span>{copiedPhone ? '✓ Copied to clipboard!' : '📋 Copy Number'}</span>
+                </button>
+              </div>
 
               {/* Trust & Review Badges */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', marginTop: '1rem', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', marginTop: '0.5rem', flexWrap: 'wrap' }}>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', background: 'rgba(0, 182, 122, 0.1)', border: '1px solid #00b67a', padding: '0.35rem 0.85rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: '600', color: '#00b67a' }}>
                   <span>★ Trustpilot</span>
                   <span style={{ color: '#fff', background: '#00b67a', padding: '1px 6px', borderRadius: '4px', fontSize: '0.75rem' }}>4.8 / 5</span>
@@ -520,8 +554,8 @@ const SearchWidget = () => {
                 </div>
               </div>
 
-              <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
-                US Callers Only • Toll-Free • Available 24/7 • Instant Flight Specialists
+              <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.25rem' }}>
+                💻 Desktop & Mobile: Click to call via your device or copy number to dial • Available 24/7 Toll-Free
               </span>
             </div>
           </div>
