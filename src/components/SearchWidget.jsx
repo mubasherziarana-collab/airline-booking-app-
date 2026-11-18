@@ -28,13 +28,21 @@ const SearchWidget = () => {
   const [carLocation, setCarLocation] = useState(null);
   const [carPickUpDate, setCarPickUpDate] = useState('');
   const [carDropOffDate, setCarDropOffDate] = useState('');
-  const [copiedPhone, setCopiedPhone] = useState(false);
+  const [copiedPhone844, setCopiedPhone844] = useState(false);
+  const [copiedPhone888, setCopiedPhone888] = useState(false);
 
-  const handleCopyPhone = (e) => {
+  const handleCopyPhone844 = (e) => {
     e.preventDefault();
     navigator.clipboard.writeText('1-844-690-3677');
-    setCopiedPhone(true);
-    setTimeout(() => setCopiedPhone(false), 2500);
+    setCopiedPhone844(true);
+    setTimeout(() => setCopiedPhone844(false), 2500);
+  };
+
+  const handleCopyPhone888 = (e) => {
+    e.preventDefault();
+    navigator.clipboard.writeText('1-888-217-5712');
+    setCopiedPhone888(true);
+    setTimeout(() => setCopiedPhone888(false), 2500);
   };
 
   const today = new Date().toISOString().split('T')[0];
@@ -478,86 +486,168 @@ const SearchWidget = () => {
           </div>
         )}
 
-        {/* 24/7 CALL DESK UI (MARKETCALL) */}
+        {/* 24/7 CALL DESK UI (MARKETCALL DUAL DESKS) */}
         {activeTab === 'calldesk' && (
-          <div className="calldesk-ui fade-in" style={{ textAlign: 'center', padding: '2.5rem 1.5rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.25rem' }}>
-              <div style={{ background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', padding: '1.1rem', borderRadius: '50%', boxShadow: '0 12px 28px rgba(16, 185, 129, 0.35)' }}>
-                <PhoneCall size={42} color="white" />
+          <div className="calldesk-ui fade-in" style={{ padding: '2rem 1.25rem' }}>
+            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(12, 115, 254, 0.1)', color: '#0c73fe', padding: '0.4rem 1rem', borderRadius: '9999px', fontSize: '0.85rem', fontWeight: '700', marginBottom: '0.75rem' }}>
+                <PhoneCall size={16} />
+                <span>24/7 VERIFIED AIRLINE DESKS</span>
+              </div>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: '800', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>
+                Dedicated Flight Assistance Lines
+              </h3>
+              <p style={{ color: 'var(--text-secondary)', maxWidth: '580px', margin: '0 auto', fontSize: '1rem', lineHeight: '1.5' }}>
+                Speak directly with certified reservation specialists. Choose your department below for instant assistance with zero added agency fees.
+              </p>
+            </div>
+
+            {/* Department Grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: '1.25rem', maxWidth: '850px', margin: '0 auto 1.75rem' }}>
+              
+              {/* Line 1: Changes, Cancellations & Customer Service (844) */}
+              <div style={{ background: '#f8fafc', border: '1.5px solid #10b981', borderRadius: '16px', padding: '1.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', textAlign: 'left', position: 'relative', boxShadow: '0 4px 15px rgba(16, 185, 129, 0.08)' }}>
+                <div>
+                  <div style={{ display: 'inline-block', background: '#ecfdf5', color: '#047857', border: '1px solid #10b981', padding: '0.25rem 0.65rem', borderRadius: '6px', fontSize: '0.75rem', fontWeight: '800', letterSpacing: '0.5px', marginBottom: '0.85rem' }}>
+                    🟢 LINE 1 • CHANGES & REBOOKING
+                  </div>
+                  <h4 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#111827', marginBottom: '0.4rem' }}>
+                    Flight Changes & Cancellations
+                  </h4>
+                  <p style={{ color: '#4b5563', fontSize: '0.9rem', lineHeight: '1.45', marginBottom: '1.25rem' }}>
+                    Fast live agent assistance with airline date modifications, schedule changes, refunds, and ticket rebooking.
+                  </p>
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                  <a 
+                    href="tel:+18446903677" 
+                    className="btn btn-primary"
+                    style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      gap: '0.5rem', 
+                      padding: '0.85rem 1.25rem', 
+                      fontSize: '1.05rem', 
+                      fontWeight: '700', 
+                      backgroundColor: '#059669', 
+                      borderColor: '#059669', 
+                      borderRadius: '12px', 
+                      color: 'white', 
+                      textDecoration: 'none',
+                      boxShadow: '0 4px 14px rgba(5, 150, 105, 0.3)'
+                    }}
+                    title="Click to call Line 1: 1-844-690-3677"
+                  >
+                    <PhoneCall size={18} className="phone-icon-pulse" />
+                    <span>Call 1-844-690-3677</span>
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={handleCopyPhone844}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '0.4rem',
+                      padding: '0.55rem',
+                      fontSize: '0.85rem',
+                      fontWeight: '600',
+                      color: copiedPhone844 ? '#059669' : '#6b7280',
+                      backgroundColor: copiedPhone844 ? 'rgba(16, 185, 129, 0.15)' : '#ffffff',
+                      border: '1px solid ' + (copiedPhone844 ? '#10b981' : '#e5e7eb'),
+                      borderRadius: '8px',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    <span>{copiedPhone844 ? '✓ Copied to clipboard!' : '📋 Copy (844) 690-3677'}</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Line 2: New Flight Bookings & Wholesale Fares (888) */}
+              <div style={{ background: '#f8fafc', border: '1.5px solid #0c73fe', borderRadius: '16px', padding: '1.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', textAlign: 'left', position: 'relative', boxShadow: '0 4px 15px rgba(12, 115, 254, 0.08)' }}>
+                <div>
+                  <div style={{ display: 'inline-block', background: '#eff6ff', color: '#1d4ed8', border: '1px solid #3b82f6', padding: '0.25rem 0.65rem', borderRadius: '6px', fontSize: '0.75rem', fontWeight: '800', letterSpacing: '0.5px', marginBottom: '0.85rem' }}>
+                    🔵 LINE 2 • NEW RESERVATIONS
+                  </div>
+                  <h4 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#111827', marginBottom: '0.4rem' }}>
+                    New Bookings & Wholesale Fares
+                  </h4>
+                  <p style={{ color: '#4b5563', fontSize: '0.9rem', lineHeight: '1.45', marginBottom: '1.25rem' }}>
+                    Compare unpublished airline seat inventory, complex international multi-city routes, and instant group rates.
+                  </p>
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                  <a 
+                    href="tel:+18882175712" 
+                    className="btn btn-primary"
+                    style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      gap: '0.5rem', 
+                      padding: '0.85rem 1.25rem', 
+                      fontSize: '1.05rem', 
+                      fontWeight: '700', 
+                      backgroundColor: '#0c73fe', 
+                      borderColor: '#0c73fe', 
+                      borderRadius: '12px', 
+                      color: 'white', 
+                      textDecoration: 'none',
+                      boxShadow: '0 4px 14px rgba(12, 115, 254, 0.3)'
+                    }}
+                    title="Click to call Line 2: 1-888-217-5712"
+                  >
+                    <PhoneCall size={18} className="phone-icon-pulse" />
+                    <span>Call 1-888-217-5712</span>
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={handleCopyPhone888}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '0.4rem',
+                      padding: '0.55rem',
+                      fontSize: '0.85rem',
+                      fontWeight: '600',
+                      color: copiedPhone888 ? '#0c73fe' : '#6b7280',
+                      backgroundColor: copiedPhone888 ? 'rgba(12, 115, 254, 0.15)' : '#ffffff',
+                      border: '1px solid ' + (copiedPhone888 ? '#3b82f6' : '#e5e7eb'),
+                      borderRadius: '8px',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    <span>{copiedPhone888 ? '✓ Copied to clipboard!' : '📋 Copy (888) 217-5712'}</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Trust & Review Badges */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', marginTop: '1.25rem', flexWrap: 'wrap' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', background: 'rgba(0, 182, 122, 0.1)', border: '1px solid #00b67a', padding: '0.35rem 0.85rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: '600', color: '#00b67a' }}>
+                <span>★ Trustpilot</span>
+                <span style={{ color: '#fff', background: '#00b67a', padding: '1px 6px', borderRadius: '4px', fontSize: '0.75rem' }}>4.8 / 5</span>
+                <span style={{ color: 'var(--text-secondary)' }}>• Verified Partner</span>
+              </div>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', background: 'rgba(66, 133, 244, 0.1)', border: '1px solid #4285f4', padding: '0.35rem 0.85rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: '600', color: '#4285f4' }}>
+                <span>Google Reviews</span>
+                <span style={{ color: '#fff', background: '#4285f4', padding: '1px 6px', borderRadius: '4px', fontSize: '0.75rem' }}>4.9 ★</span>
+                <span style={{ color: 'var(--text-secondary)' }}>• 100% Secure Desks</span>
               </div>
             </div>
-            <h3 style={{ fontSize: '1.65rem', fontWeight: '800', marginBottom: '0.65rem', color: 'var(--text-primary)' }}>
-              24/7 Live Flight Booking & Changes Desk
-            </h3>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.75rem', maxWidth: '540px', margin: '0 auto 1.75rem', fontSize: '1.02rem', lineHeight: '1.6' }}>
-              Prefer to book directly with a certified agent, or need fast assistance with flight changes, ticket cancellations, and date modifications? Call our live desk for unpublished wholesale fares and immediate help.
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.85rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-                <a 
-                  href="tel:+18446903677" 
-                  className="btn btn-primary search-btn" 
-                  style={{ 
-                    display: 'inline-flex', 
-                    alignItems: 'center', 
-                    gap: '0.75rem', 
-                    padding: '1.15rem 2.25rem', 
-                    fontSize: '1.2rem',
-                    fontWeight: '700',
-                    textDecoration: 'none', 
-                    backgroundColor: '#059669', 
-                    borderColor: '#059669',
-                    borderRadius: '9999px',
-                    boxShadow: '0 8px 25px rgba(5, 150, 105, 0.35)',
-                    cursor: 'pointer'
-                  }}
-                  title="Click to dial 1-844-690-3677 directly or connect via your phone"
-                >
-                  <PhoneCall size={22} className="phone-icon-pulse" />
-                  <span>Call 1-844-690-3677</span>
-                </a>
 
-                <button
-                  type="button"
-                  onClick={handleCopyPhone}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.45rem',
-                    padding: '0.95rem 1.4rem',
-                    fontSize: '0.95rem',
-                    fontWeight: '600',
-                    color: copiedPhone ? '#059669' : '#374151',
-                    backgroundColor: copiedPhone ? 'rgba(16, 185, 129, 0.12)' : '#f1f5f9',
-                    border: `1.5px solid ${copiedPhone ? '#10b981' : '#cbd5e1'}`,
-                    borderRadius: '9999px',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease'
-                  }}
-                  title="Click to copy number to clipboard"
-                >
-                  <span>{copiedPhone ? '✓ Copied to clipboard!' : '📋 Copy Number'}</span>
-                </button>
-              </div>
-
-              {/* Trust & Review Badges */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', marginTop: '0.5rem', flexWrap: 'wrap' }}>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', background: 'rgba(0, 182, 122, 0.1)', border: '1px solid #00b67a', padding: '0.35rem 0.85rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: '600', color: '#00b67a' }}>
-                  <span>★ Trustpilot</span>
-                  <span style={{ color: '#fff', background: '#00b67a', padding: '1px 6px', borderRadius: '4px', fontSize: '0.75rem' }}>4.8 / 5</span>
-                  <span style={{ color: 'var(--text-secondary)' }}>• Verified Partner</span>
-                </div>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', background: 'rgba(66, 133, 244, 0.1)', border: '1px solid #4285f4', padding: '0.35rem 0.85rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: '600', color: '#4285f4' }}>
-                  <span>Google Reviews</span>
-                  <span style={{ color: '#fff', background: '#4285f4', padding: '1px 6px', borderRadius: '4px', fontSize: '0.75rem' }}>4.9 ★</span>
-                  <span style={{ color: 'var(--text-secondary)' }}>• 100% Secure Desk</span>
-                </div>
-              </div>
-
-              <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.25rem' }}>
-                💻 Desktop & Mobile: Click to call via your device or copy number to dial • Available 24/7 Toll-Free
-              </span>
-            </div>
+            <span style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.75rem', textAlign: 'center' }}>
+              US Callers • Toll-Free • Available 24/7 • Instant Flight Specialists
+            </span>
           </div>
         )}
 
