@@ -82,8 +82,8 @@ const faqs = [
     answer: (
       <>
         Yes! MyFlyOra provides dedicated 24/7 phone desks. For ticket changes, date modifications, and cancellations, call our dedicated Changes Desk at{' '}
-        <a href="tel:+18446903677" style={{ color: '#059669', fontWeight: '700', textDecoration: 'underline' }}>
-          1-844-690-3677
+        <a href="tel:+18446904326" style={{ color: '#059669', fontWeight: '700', textDecoration: 'underline' }}>
+          1-844-690-4326
         </a>
         . For new flight reservations and unpublished wholesale fares, call our Booking Desk at{' '}
         <a href="tel:+18882175712" style={{ color: '#0c73fe', fontWeight: '700', textDecoration: 'underline' }}>
@@ -232,7 +232,7 @@ const PopularRoutesAndFAQ = () => {
             <PhoneCall size={28} className="trust-icon" />
             <div>
               <h4>24/7 Live Desks</h4>
-              <p>Changes: <a href="tel:+18446903677" style={{ color: '#059669', fontWeight: '700' }}>1-844-690-3677</a> • Bookings: <a href="tel:+18882175712" style={{ color: '#0c73fe', fontWeight: '700' }}>1-888-217-5712</a></p>
+              <p>Changes: <a href="tel:+18446904326" style={{ color: '#059669', fontWeight: '700' }}>1-844-690-4326</a> • Bookings: <a href="tel:+18882175712" style={{ color: '#0c73fe', fontWeight: '700' }}>1-888-217-5712</a></p>
             </div>
           </div>
         </div>

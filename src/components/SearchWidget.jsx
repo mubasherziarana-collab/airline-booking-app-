@@ -33,7 +33,7 @@ const SearchWidget = () => {
 
   const handleCopyPhone844 = (e) => {
     e.preventDefault();
-    navigator.clipboard.writeText('1-844-690-3677');
+    navigator.clipboard.writeText('1-844-690-4326');
     setCopiedPhone844(true);
     setTimeout(() => setCopiedPhone844(false), 2500);
   };
@@ -521,7 +521,7 @@ const SearchWidget = () => {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
                   <a 
-                    href="tel:+18446903677" 
+                    href="tel:+18446904326" 
                     className="btn btn-primary"
                     style={{ 
                       display: 'flex', 
@@ -538,10 +538,10 @@ const SearchWidget = () => {
                       textDecoration: 'none',
                       boxShadow: '0 4px 14px rgba(5, 150, 105, 0.3)'
                     }}
-                    title="Click to call Line 1: 1-844-690-3677"
+                    title="Click to call Line 1: 1-844-690-4326"
                   >
                     <PhoneCall size={18} className="phone-icon-pulse" />
-                    <span>Call 1-844-690-3677</span>
+                    <span>Call 1-844-690-4326</span>
                   </a>
 
                   <button
@@ -562,7 +562,7 @@ const SearchWidget = () => {
                       cursor: 'pointer'
                     }}
                   >
-                    <span>{copiedPhone844 ? '✓ Copied to clipboard!' : '📋 Copy (844) 690-3677'}</span>
+                    <span>{copiedPhone844 ? '✓ Copied to clipboard!' : '📋 Copy (844) 690-4326'}</span>
                   </button>
                 </div>
               </div>
