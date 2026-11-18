@@ -130,7 +130,7 @@ const AIChatAssistant = () => {
       } else if (lower.includes('call') || lower.includes('phone') || lower.includes('agent')) {
         aiResponse = {
           sender: 'ai',
-          text: `Need to book with a live specialist? Our 24/7 US flight reservation desk is available toll-free at **1-844-213-5792**!`,
+          text: `Need to book or change a flight with a live specialist? Our 24/7 US flight reservation desk is available toll-free at **1-844-690-3677**!`,
           hasPhoneCall: true
         };
       } else {
@@ -239,7 +239,7 @@ const AIChatAssistant = () => {
                   {msg.hasPhoneCall && (
                     <div style={{ marginTop: '0.85rem' }}>
                       <a
-                        href="tel:+18442135792"
+                        href="tel:+18446903677"
                         style={{
                           display: 'inline-flex',
                           alignItems: 'center',
@@ -253,10 +253,10 @@ const AIChatAssistant = () => {
                           textDecoration: 'none',
                           boxShadow: '0 2px 8px rgba(5, 150, 105, 0.3)'
                         }}
-                        title="Click to dial 1-844-213-5792"
+                        title="Click to dial 1-844-690-3677"
                       >
                         <PhoneCall size={16} />
-                        <span>Call 1-844-213-5792</span>
+                        <span>Call 1-844-690-3677</span>
                       </a>
                     </div>
                   )}

@@ -32,7 +32,7 @@ const SearchWidget = () => {
 
   const handleCopyPhone = (e) => {
     e.preventDefault();
-    navigator.clipboard.writeText('1-844-213-5792');
+    navigator.clipboard.writeText('1-844-690-3677');
     setCopiedPhone(true);
     setTimeout(() => setCopiedPhone(false), 2500);
   };
@@ -487,15 +487,15 @@ const SearchWidget = () => {
               </div>
             </div>
             <h3 style={{ fontSize: '1.65rem', fontWeight: '800', marginBottom: '0.65rem', color: 'var(--text-primary)' }}>
-              24/7 Live Flight Booking Desk
+              24/7 Live Flight Booking & Changes Desk
             </h3>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '1.75rem', maxWidth: '540px', margin: '0 auto 1.75rem', fontSize: '1.02rem', lineHeight: '1.6' }}>
-              Prefer to book directly with a certified flight reservation agent? Call our live desk for unpublished wholesale fares, instant group discounts, and immediate date modifications.
+              Prefer to book directly with a certified agent, or need fast assistance with flight changes, ticket cancellations, and date modifications? Call our live desk for unpublished wholesale fares and immediate help.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.85rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
                 <a 
-                  href="tel:+18442135792" 
+                  href="tel:+18446903677" 
                   className="btn btn-primary search-btn" 
                   style={{ 
                     display: 'inline-flex', 
@@ -511,10 +511,10 @@ const SearchWidget = () => {
                     boxShadow: '0 8px 25px rgba(5, 150, 105, 0.35)',
                     cursor: 'pointer'
                   }}
-                  title="Click to dial 1-844-213-5792 directly or connect via your phone"
+                  title="Click to dial 1-844-690-3677 directly or connect via your phone"
                 >
                   <PhoneCall size={22} className="phone-icon-pulse" />
-                  <span>Call 1-844-213-5792</span>
+                  <span>Call 1-844-690-3677</span>
                 </a>
 
                 <button
