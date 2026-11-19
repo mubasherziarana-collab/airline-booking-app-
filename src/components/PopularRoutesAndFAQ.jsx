@@ -75,7 +75,7 @@ const initialRoutes = [
 const faqs = [
   {
     question: 'How does MyFlyOra find the lowest flight prices?',
-    answer: 'MyFlyOra connects directly with leading global airlines, flight aggregators, and wholesale inventory networks in real time. We scan hundreds of sources simultaneously—including Aviasales, Expedia, and direct carrier deals—allowing you to compare fares transparently without any added markups or booking fees.'
+    answer: 'MyFlyOra connects directly with leading global airlines, flight aggregators, and travel inventory networks in real time. We scan hundreds of sources simultaneously—including Aviasales, Expedia, and direct carrier deals—allowing you to compare fares transparently without any added markups or booking fees.'
   },
   {
     question: 'Can I book flights or change tickets over the phone with a live agent?',
@@ -85,7 +85,7 @@ const faqs = [
         <a href="tel:+18446904326" style={{ color: '#059669', fontWeight: '700', textDecoration: 'underline' }}>
           1-844-690-4326
         </a>
-        . For new flight reservations and unpublished wholesale fares, call our Booking Desk at{' '}
+        . For new flight reservations and competitive airfares, call our Booking Desk at{' '}
         <a href="tel:+18882175712" style={{ color: '#0c73fe', fontWeight: '700', textDecoration: 'underline' }}>
           1-888-217-5712
         </a>

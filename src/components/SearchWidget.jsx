@@ -567,17 +567,17 @@ const SearchWidget = () => {
                 </div>
               </div>
 
-              {/* Line 2: New Flight Bookings & Wholesale Fares (888) */}
+              {/* Line 2: New Flight Bookings & Travel Fares (888) */}
               <div style={{ background: '#f8fafc', border: '1.5px solid #0c73fe', borderRadius: '16px', padding: '1.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', textAlign: 'left', position: 'relative', boxShadow: '0 4px 15px rgba(12, 115, 254, 0.08)' }}>
                 <div>
                   <div style={{ display: 'inline-block', background: '#eff6ff', color: '#1d4ed8', border: '1px solid #3b82f6', padding: '0.25rem 0.65rem', borderRadius: '6px', fontSize: '0.75rem', fontWeight: '800', letterSpacing: '0.5px', marginBottom: '0.85rem' }}>
                     🔵 LINE 2 • NEW RESERVATIONS
                   </div>
                   <h4 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#111827', marginBottom: '0.4rem' }}>
-                    New Bookings & Wholesale Fares
+                    New Bookings & Airline Fares
                   </h4>
                   <p style={{ color: '#4b5563', fontSize: '0.9rem', lineHeight: '1.45', marginBottom: '1.25rem' }}>
-                    Compare unpublished airline seat inventory, complex international multi-city routes, and instant group rates.
+                    Compare competitive airline seat inventory, complex international multi-city routes, and instant group rates.
                   </p>
                 </div>
 
