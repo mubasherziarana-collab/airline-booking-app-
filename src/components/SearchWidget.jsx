@@ -28,14 +28,14 @@ const SearchWidget = () => {
   const [carLocation, setCarLocation] = useState(null);
   const [carPickUpDate, setCarPickUpDate] = useState('');
   const [carDropOffDate, setCarDropOffDate] = useState('');
-  const [copiedPhone844, setCopiedPhone844] = useState(false);
+  const [copiedPhone855, setCopiedPhone855] = useState(false);
   const [copiedPhone888, setCopiedPhone888] = useState(false);
 
-  const handleCopyPhone844 = (e) => {
+  const handleCopyPhone855 = (e) => {
     e.preventDefault();
-    navigator.clipboard.writeText('1-844-690-4326');
-    setCopiedPhone844(true);
-    setTimeout(() => setCopiedPhone844(false), 2500);
+    navigator.clipboard.writeText('1-855-671-1449');
+    setCopiedPhone855(true);
+    setTimeout(() => setCopiedPhone855(false), 2500);
   };
 
   const handleCopyPhone888 = (e) => {
@@ -521,7 +521,7 @@ const SearchWidget = () => {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
                   <a 
-                    href="tel:+18446904326" 
+                    href="tel:+18556711449" 
                     className="btn btn-primary"
                     style={{ 
                       display: 'flex', 
@@ -538,15 +538,15 @@ const SearchWidget = () => {
                       textDecoration: 'none',
                       boxShadow: '0 4px 14px rgba(5, 150, 105, 0.3)'
                     }}
-                    title="Click to call Line 1: 1-844-690-4326"
+                    title="Click to call Line 1: 1-855-671-1449"
                   >
                     <PhoneCall size={18} className="phone-icon-pulse" />
-                    <span>Call 1-844-690-4326</span>
+                    <span>Call 1-855-671-1449</span>
                   </a>
 
                   <button
                     type="button"
-                    onClick={handleCopyPhone844}
+                    onClick={handleCopyPhone855}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -555,14 +555,14 @@ const SearchWidget = () => {
                       padding: '0.55rem',
                       fontSize: '0.85rem',
                       fontWeight: '600',
-                      color: copiedPhone844 ? '#059669' : '#6b7280',
-                      backgroundColor: copiedPhone844 ? 'rgba(16, 185, 129, 0.15)' : '#ffffff',
-                      border: '1px solid ' + (copiedPhone844 ? '#10b981' : '#e5e7eb'),
+                      color: copiedPhone855 ? '#059669' : '#6b7280',
+                      backgroundColor: copiedPhone855 ? 'rgba(16, 185, 129, 0.15)' : '#ffffff',
+                      border: '1px solid ' + (copiedPhone855 ? '#10b981' : '#e5e7eb'),
                       borderRadius: '8px',
                       cursor: 'pointer'
                     }}
                   >
-                    <span>{copiedPhone844 ? '✓ Copied to clipboard!' : '📋 Copy (844) 690-4326'}</span>
+                    <span>{copiedPhone855 ? '✓ Copied to clipboard!' : '📋 Copy (855) 671-1449'}</span>
                   </button>
                 </div>
               </div>
