@@ -54,7 +54,10 @@ const Footer = () => {
         
         <div className="footer-bottom">
           <p className="disclaimer">
-            <strong>Disclaimer:</strong> MyFlyOra is a travel meta-search engine. We do not process bookings, take payments, or collect credit card information. We securely redirect you to trusted partners like Aviasales, Kiwi.com, and Booking.com to complete your transaction safely.
+            <strong>Disclaimer:</strong> MyFlyOra is an independent travel meta-search engine and referral service. We do not process bookings, take payments, or collect credit card information. We securely redirect you to trusted partners like Aviasales, Kiwi.com, and Booking.com or connect you with independent third-party travel providers to complete your transaction safely.
+          </p>
+          <p className="disclaimer">
+            <strong>24/7 Availability Disclaimer:</strong> Same-day/24-7 services and live phone desk support are subject to provider participation, location, agent and technician availability, and demand. Availability and response times are not guaranteed in all areas or at all times.
           </p>
           <p>&copy; {new Date().getFullYear()} MyFlyOra. All rights reserved.</p>
         </div>
